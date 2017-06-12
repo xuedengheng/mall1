@@ -1,0 +1,175 @@
+.gHeight {
+  height: 1.1rem;
+}
+.root {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+
+  .warning{
+     width:100%;
+     height:.8rem;
+     line-height:.8rem;
+     background: rgba(0,0,0,.5);
+     color: #FFFFFF;
+     text-align: center;
+  }
+
+  .nogoods{
+    display: flex;
+    display: -webkit-flex;
+    width:100%;
+    height: 1.1rem;
+    align-items: center;
+    background-color: #ffffff;
+
+    .left {
+      display: flex;
+      flex: 1;
+      height: 100%;
+      background-color: #f7f7f7;
+
+      .leftNav {
+        flex: auto;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+        color: #828282;
+
+        .icon {
+          width: .5rem;
+          height: .6rem;
+          display: block;
+          margin-bottom: .05rem;
+        }
+
+        .home {
+          background: url("../../../../images/product/goods_icon_homepage.png");
+          background-size: 80%;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        .custom {
+          background: url("../../../../images/product/goods_icon_service.png");
+          background-size: 80%;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+    }
+  }
+
+  .havegoods{
+    display: flex;
+    display: -webkit-flex;
+    width:100%;
+    height: 1.1rem;
+    align-items: center;
+    background-color: #ffffff;
+
+    .left {
+      display: flex;
+      flex: 1;
+      height: 100%;
+      background-color: #f7f7f7;
+
+      .leftNav {
+        flex: auto;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+        color: #828282;
+
+        .icon {
+          width: .5rem;
+          height: .6rem;
+          display: block;
+          margin-bottom: .05rem;
+        }
+
+        .home {
+          background: url("../../../../images/product/goods_icon_homepage.png");
+          background-size: 80%;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        .custom {
+          background: url("../../../../images/product/goods_icon_service.png");
+          background-size: 80%;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+    }
+  }
+
+  .addCart {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fc6c26;
+    color: #ffffff;
+    font-size: .3rem;
+  }
+
+  .buyNow {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fe5400;
+    color: #ffffff;
+    font-size: .3rem;
+  }
+
+  .noinventory {
+    flex: 1.8;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #bbbbbb;
+    color: #ffffff;
+    font-size: .3rem;
+  }
+
+
+
+}
+
+.linshiroot{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+
+  .font {
+    color: #FFFFFF;
+    font-size: .3rem;
+    line-height: 1.1rem;
+    text-align: center;
+    background-color: #fe5400;
+  }
+
+  .popover{
+    background-color: rgba(0,0,0,.5);
+    text-align: center;
+    font-size: .3rem;
+    line-height: 1.1rem;
+    color: #FFFFFF;
+  }
+}

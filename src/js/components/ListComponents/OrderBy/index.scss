@@ -1,0 +1,54 @@
+.root {
+  z-index: 1;
+  position: fixed;
+  top: 1.1rem;
+  display: flex;
+  width: 100%;
+  height: 0.9rem;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
+
+  .panel {
+    flex: 1;
+    border-right: 1px solid #787878;
+
+    &:last-child {
+      border-width: 0;
+    }
+
+    .font {
+      font-size: .26rem;
+      color: #5b5b5b;
+      text-align: center;
+      
+      i {
+        width: 0.14rem;
+        height: .31rem;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: .1rem;
+      }
+      
+      .default {
+        background: url("../../../../images/base/search_icon_price1.png") no-repeat;
+        background-size: 100%;
+      }
+
+      .down {
+        background: url("../../../../images/base/search_icon_pricedwon.png") no-repeat;
+        background-size: 100%;
+      }
+
+      .up {
+        background: url("../../../../images/base/search_icon_priceup.png") no-repeat;
+        background-size: 100%;
+      }
+    }
+
+    .active {
+      color: #fe5400;
+    }
+  }
+}

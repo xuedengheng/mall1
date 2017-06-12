@@ -1,0 +1,22 @@
+.prompting {
+  margin-top: .2rem;
+  padding-left: .2rem;
+  color: #828282;
+}
+
+.refundmoney {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 .24rem;
+  margin-top: .2rem;
+  height: .95rem;
+  background: white;
+  & input {
+    height: .7rem;
+    width: 100%;
+    border: none;
+    color: #333;
+    font-size: .28rem;
+  }
+}

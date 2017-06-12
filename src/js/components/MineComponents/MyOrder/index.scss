@@ -1,0 +1,38 @@
+.root {
+  width: 100%;
+  height: .88rem;
+  padding: 0 .24rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #eeeeee;
+
+  .title {
+    font-size: .3rem;
+    color: #333;
+
+    i {
+      width: .26rem;
+      height: .35rem;
+      background: url("../../../../images/mine/mine_icon_order.png") no-repeat;
+      background-size: 100%;
+      display: inline-block;
+      vertical-align: sub;
+      margin-right: .16rem;
+    }
+  }
+
+  .entry {
+    font-size: .28rem;
+    color: #828282;
+
+    i {
+      width: .14rem;
+      height: .28rem;
+      display: inline-block;
+      vertical-align: sub;
+      margin-left: .16rem;
+    }
+  }
+}

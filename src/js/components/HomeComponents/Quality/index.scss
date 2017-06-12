@@ -1,0 +1,64 @@
+.root{
+  width: 100%;
+  background-color: #FFFFFF;
+
+  .panel {
+    width: 100%;
+    display: flex;
+    padding: 0 .16rem;
+    padding-bottom: .2rem;
+
+    .list {
+      width: 50%;
+      &:nth-child(odd) {
+        padding-right: .05rem;
+      }
+
+      &:nth-child(even) {
+        padding-left: .05rem;
+      }
+
+      .big {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-top: 56.49%;
+        background-color: #FFFFFF;
+        margin-bottom: .1rem;
+        .pic {
+          position: absolute;
+          display: block;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+        }
+      }
+
+      .small {
+        display: inline-block;
+        width: 49%;
+        &:nth-child(odd) .imgDiv{
+          margin-left: .1rem;
+        }
+        &:nth-child(even) .imgDiv{
+          //margin-right: .1rem;
+        }
+        .imgDiv {
+          position: relative;
+          width: 100%;
+          height: 0;
+          padding-top: 104%;
+          .pic {
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+}

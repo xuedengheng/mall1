@@ -1,0 +1,61 @@
+.root {
+  width: 100%;
+  .container {
+    width: 100%;
+    padding-top: .2rem;
+    .listWrapper {
+      display: block;
+      width: 100%;
+      margin-bottom: .2rem;
+      background: #ffffff;
+      .head {
+        width: 100%;
+        height: .6rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 .24rem;
+        line-height: .6rem;
+        border-bottom: 1px solid #dddddd;
+        .status span {
+          margin-right: .1rem
+        }
+      }
+      .content {
+        width: 100%;
+        height: 1.6rem;
+        display: flex;
+        padding: .2rem .24rem;
+        border-bottom: 1px solid #dddddd;
+        .thumb {
+          flex: 0 0 1.2rem;
+          margin-right: .2rem;
+        }
+        .detail {
+          flex: 1;
+          display: flex;
+          .desc {
+            flex: 1;
+            .name {
+              line-height: .3rem;
+            }
+          }
+          .count {
+            flex: 0 0 1.8rem;
+            text-align: right;
+            .price {
+              line-height: .3rem;
+            }
+          }
+        }
+      }
+      .footer {
+        width: 100%;
+        height: .6rem;
+        padding: 0 .24rem;
+        text-align: right;
+        line-height: .6rem;
+      }
+    }
+  }
+}

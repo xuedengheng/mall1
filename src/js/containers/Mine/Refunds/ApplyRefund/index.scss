@@ -1,0 +1,163 @@
+.applyrefund {
+  width: 100%;
+  height: 100%;
+  background: #eeeeee;
+  .refund {
+    width: 100%;
+    hright: 100%;
+    .refundtype {
+      width: 100%;
+      .refundprompt {
+        display: flex;
+        flex: 1;
+        width: 100%;
+        height: .65rem;
+        line-height: .65rem;
+        padding: 0 .24rem;
+        color: #828282;
+        .required {
+          color: #eb5604;
+        }
+      }
+      .refundchoose {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0 .24rem;
+        height: .95rem;
+        line-height: .95rem;
+        background: white;
+        .selectchoose {
+          flex: 1;
+          width: 100%;
+          & select {
+            width: 92%;
+            height: .95rem;
+            line-height: .95rem;
+            appearance: none;
+            border: none;
+            background: #fff;
+            color: #848383;
+          }
+        }
+        .rightrarr {
+          width: .3rem;
+          & img {
+            width: .15rem
+          }
+        }
+        .refundnum {
+          display: flex;
+          width: 2rem;
+          height: .65rem;
+          line-height: .65rem;
+          border-radius: 0.08rem;
+          border: 0.01rem solid #bababa;
+          font-size: .28rem;
+          .clickadd, .clickreduce {
+            hright: 1.5rem;
+            flex: 1;
+            text-align: center;
+          }
+          .number {
+            flex: 1;
+            text-align: center;
+            border-left: 0.01rem solid #bababa;
+            border-right: 0.01rem solid #bababa;
+            & input {
+              width: .7rem;
+              height: .58rem;
+              text-align: center;
+              border: none;
+            }
+          }
+        }
+      }
+      .refundmoney {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 0 .24rem;
+        height: .95rem;
+        background: white;
+        & input {
+          height: .7rem;
+          width: 100%;
+          border: none;
+          color: #333;
+          font-size: .28rem;
+        }
+      }
+      .pickerpad {
+        color: #333333;
+        padding: 0 .24rem;
+      }
+      .pickernocolor {
+        padding: 0 .24rem;
+      }
+      .picbox {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 1.8rem;
+        padding: 0 .24rem;
+        background: #FFFFFF;
+        .pic {
+          position: relative;
+          width: 1.2rem;
+          height: 1.2rem;
+          margin-right: .2rem;
+          border-radius: .1rem;
+          background: transparent;
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: .1rem;
+          }
+          .del {
+            position: absolute;
+            top: -.1rem;
+            right: -.1rem;
+            width: .4rem;
+            height: .4rem;
+            background-image: url(../../../../../images/mine/refund/my_refund_delete.png);
+            background-repeat: no-repeat;
+            background-size: .4rem .4rem;
+          }
+        }
+        .pic.addpic {
+          background-color: transparent;
+          background-image: url(../../../../../images/mine/refund/my_refund_addimage.png);
+          background-repeat: no-repeat;
+          background-size: 1.2rem 1.2rem;
+          .filelabel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+          }
+          .fileinput {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            width: 100%;
+            height: 100%;
+            clip: rect(0, 0, 0, 0);
+          }
+        }
+      }
+    }
+  }
+  .bottomB {
+    position: relative;
+    width: 100vw;
+    height: .98rem;
+    bottom: 0;
+    left: 0;
+  }
+}

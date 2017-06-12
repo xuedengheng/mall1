@@ -1,0 +1,265 @@
+//重置antd-mobile样式
+.am-carousel .slick-dots li.slick-active button:before {
+  color: #1bbc9b;
+  opacity: 1;
+}
+
+.am-navbar-light {
+  color: #1abc9c;
+}
+
+// 重写radio样式
+.am-radio.am-radio-checked .am-radio-inner:after {
+  position: absolute;
+  z-index: 100;
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  left: 5px;
+  top: 5px;
+  background: #1abc9c;
+  border-radius: 50%;
+  border: none;
+}
+
+.am-radio-inner:before {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #999;
+  background: #fff;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  border-radius: 50%;
+  outline: 0;
+}
+
+.am-radio-inner {
+  right: 3px;
+}
+
+//Carousel dot样式
+.am-carousel-wrap-dot > span {
+  background: #ffffff;
+  opacity: .3;
+}
+
+.am-carousel-wrap-dot-active > span {
+  opacity: .8;
+}
+
+.slider-list {
+  cursor: pointer;
+}
+
+//Tabs 颜色
+.am-tabs-ink-bar {
+  background-color: #fe5400;
+}
+
+.am-tabs-bar .am-tabs-tab {
+  color: #5b5b5b;
+  font-size: .24rem;
+}
+
+.am-tabs-bar .am-tabs-tab-active {
+  color: #fe5400;
+}
+
+//react-slick
+.slideCenter {
+  margin-left: -20px;
+  margin-right: -20px;
+
+  h3.slick-active {
+    opacity: 1;
+    transform: scale(1)
+  }
+
+  h3 {
+    opacity: .8;
+    transform: scale(.9);
+    transition: all .3s ease
+  }
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: -25px;
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  li.slick-active button:before {
+    color: #ffffff;
+    opacity: .8;
+  }
+
+  li {
+    position: relative;
+    display: inline-block;
+    height: .16rem;
+    width: .16rem;
+    margin: 0 5px;
+    padding: 0;
+    cursor: pointer;
+
+    button {
+      border: 0;
+      background: 0 0;
+      display: block;
+      height: .16rem;
+      width: .16rem;
+      outline: 0;
+      line-height: 0;
+      font-size: 0;
+      color: #fff;
+      padding: 5px;
+      cursor: pointer;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "•";
+        width: 20px;
+        height: 20px;
+        font-size: 6px;
+        line-height: 20px;
+        text-align: center;
+        color: #ffffff;
+        opacity: .3;
+      }
+    }
+  }
+}
+
+//重写ListView组件
+.am-list-body {
+  min-height: 76.2vh;
+  background-color: #eeeeee !important;
+  border-width: 0;
+}
+
+.am-refresh-control-ptr {
+  height: .8rem;
+  margin-top: -.8rem;
+  padding-top: .1rem;
+}
+
+//switch
+.am-switch input[type="checkbox"]:checked + .checkbox, .am-switch.am-switch-android input[type="checkbox"]:checked + .checkbox {
+  background: #fc6c26;
+}
+
+.am-switch.am-switch-android input[type="checkbox"]:checked + .checkbox:after {
+  -webkit-transform: translateX(0.4rem);
+  transform: translateX(0.4rem);
+}
+
+.am-switch.am-switch-android .checkbox:after {
+  width: 0.56rem;
+  height: 0.56rem;
+  border-radius: 0.56rem;
+  box-shadow: 0.04rem 0.04rem 0.08rem rgba(0, 0, 0, 0.21);
+}
+
+.am-switch.am-switch-android .checkbox {
+  width: 1.02rem;
+  height: 0.62rem;
+  border-radius: 0.62rem;
+  background: #e5e5e5;
+}
+
+.am-modal.am-modal-android {
+  .am-modal-content {
+    border-radius: .14rem;
+    .am-modal-body {
+      font-size: .28rem;
+      color: #888;
+      text-align: center;
+      padding: 0 .3rem
+    }
+    .am-modal-footer {
+      padding-bottom: 0;
+      .am-modal-button-group-h {
+        border-top: 1px solid #dddddd;
+        padding: 0;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+//订单tab重写样式
+.order-tabs {
+  .am-tabs-bar {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+  }
+  .am-tabs-content-animated {
+    .am-tabs-tabpane {
+      position: relative;
+      top: .87rem;
+      padding-bottom: .87rem;
+    }
+  }
+}
+
+//易点tab重写样式
+.coin-tabs {
+  .am-tabs-bar {
+    z-index: 10;
+    position: fixed;
+    width: 100%;
+    top: 1.98rem;
+  }
+}
+
+//易物卡tab重写样式
+.card-tabs {
+  .am-tabs-bar {
+    z-index: 10;
+    position: fixed;
+    width: 100%;
+    top: 0.98rem;
+  }
+  .am-tabs-content-animated {
+    .am-tabs-tabpane {
+      position: relative;
+      top: .84rem;
+      padding-bottom: .84rem;
+    }
+  }
+}
+
+//申请退款Picker样式
+.am-list-item{
+ padding: 0 !important;
+}
+.am-list-item .am-list-line{
+  padding-right: .24rem !important;
+}
+.am-list-content {
+  font-size: .28rem !important;
+  color: #777777 !important;
+}
+.am-picker-col-indicator{
+  border-top: 0.01rem #333333 solid;
+  border-bottom: 0.01rem #333333 solid;
+}
+.am-picker-popup-header-left {
+  font-size: 0.3rem !important;
+  color: #333333 !important;
+}
+.am-picker-popup-header-right {
+  font-size: 0.3rem !important;
+  color: #eb5604 !important;
+}

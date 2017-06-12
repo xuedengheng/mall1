@@ -1,0 +1,73 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #eeeeee;
+  overflow: scroll;
+  z-index: 11;
+  .addressItem{
+    width: 100%;
+    .addressLink {
+      display: flex;
+      width: 100%;
+      min-height: 1.6rem;
+      padding: .2rem .24rem;
+      border-bottom: 1px solid #dddddd;
+      background: #FFFFFF;
+      color: #828282;
+      .leftContent {
+        flex: 1;
+        position: relative;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        display: flex;
+        .header {
+          font-size: 0;
+          color: #333;
+          &:after {
+            display: block;
+            content: "";
+            clear: both;
+          }
+          .name {
+            font-size: .28rem;
+            line-height: .28rem;
+            float: left;
+            .active {
+              color: #fe5400;
+            }
+          }
+          .phone {
+            font-size: .28rem;
+            line-height: .28rem;
+            position: absolute;
+            right: 0;
+          }
+        }
+        .address {
+          margin-top: .05rem;
+          font-size: .24rem;
+          word-break: break-all;
+          color: #828282;
+        }
+        .idNo {
+          margin-top: .05rem;
+          line-height: .24rem;
+          font-size: .24rem;
+          color: #828282;
+        }
+      }
+      .rightContent {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 0 0 .8424rem;
+      }
+    }
+  }
+}

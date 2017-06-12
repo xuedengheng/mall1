@@ -1,0 +1,28 @@
+.scrollBox {
+  width: 100%;
+  height: .8rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  position: relative;
+  &::-webkit-scrollbar{width:0;height:0}
+  ul {
+      li {
+        font-size: .3rem;
+        float: left;
+        width: 1.6rem;
+        line-height: .8rem;
+        text-align: center;
+        height:.8rem;
+      }
+      .activeLi{
+        width: 1.6rem;
+        position: absolute;
+        content: '';
+        bottom: 0;
+        left: 0;
+        height: 0.05rem;
+        transition: all .5s;
+        background: #fc6c26;
+      }
+    }
+}

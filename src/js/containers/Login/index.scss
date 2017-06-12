@@ -1,0 +1,81 @@
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  .content {
+    width: 100%;
+    flex: 1;
+    .inputPanel {
+      padding: 0 .24rem;
+      .username {
+        margin-bottom: .2rem;
+      }
+      .password {
+        //margin-bottom: .3rem;
+      }
+      .searchInput {
+        background: rgba(255, 255, 255, .5);
+        opacity: .5;
+        height: .88rem;
+        flex-grow: 1;
+        border-radius: .1rem;
+        display: flex;
+        display: -webkit-flex;
+        span {
+          width: .265rem;
+          margin: 0 .24rem;
+          img {
+            width: 100%;
+          }
+        }
+        input {
+          font-size: .3rem;
+          border: none;
+          color: #000;
+          background: none;
+          flex-grow: 1;
+        }
+      }
+      .otherCtrl {
+        margin-bottom: .05rem;
+        padding: .3rem 0;
+      }
+      .loginBtn {
+        font-size: .32rem;
+        border-radius: .09rem;
+        height: .88rem;
+        line-height: .88rem;
+        text-align: center;
+        color: #FFFFFF;
+        background-color: #fe5400;
+      }
+      .wxloginPanel {
+        width: 100%;
+        .wxlogin {
+          width: 1rem;
+          margin: .5rem auto;
+          img {
+            width: 1rem;
+            height: 1rem;
+          }
+          p {
+            font-size: .24rem;
+            color: #828282;
+          }
+        }
+      }
+    }
+  }
+  .advPanel {
+    flex: 0 0 .8rem;
+    .adv {
+      width: 3rem;
+      margin: auto;
+    }
+  }
+
+}

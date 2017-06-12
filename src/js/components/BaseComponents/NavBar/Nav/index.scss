@@ -1,0 +1,26 @@
+.root {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  color: #bababa;
+  &:hover {
+    color: #bababa;
+  }
+}
+
+.ico {
+  width: .5rem;
+  height: .6rem;
+  display: block;
+  margin-bottom: .5vh;
+}
+
+.text {
+  display: block;
+  line-height: 1;
+}
+

@@ -1,0 +1,46 @@
+.root {
+  width: 100%;
+  overflow: hidden;
+  .public{
+    padding:0 .24rem;
+    background: white;
+    margin-top: .2rem;
+    .line{
+      width:100%;
+      height:.88rem;
+      line-height:.88rem;
+      border-bottom: .01rem solid #dcdcdc;
+      .left{
+        display: inline-block;
+        width:30%;
+        font-size: .3rem;
+        color:#828282;
+      }
+      .right{
+        display: inline-block;
+        width:70%;
+        text-align: right;
+        font-size: .3rem;
+        color:#333;
+      }
+      .rightP{
+        display: inline-block;
+        width:70%;
+        text-align: right;
+        font-size: .3rem;
+        color:#fe5400;
+      }
+    }
+  }
+  .btn{
+    position: fixed;
+    bottom:0;
+    width:100%;
+    height:.98rem;
+    line-height:.98rem;
+    font-size: .32rem;
+    background: #fe5400;
+    color: #fff;
+    text-align: center;
+  }
+}

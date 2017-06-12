@@ -1,0 +1,56 @@
+.root {
+  width: 100%;
+  background-color: #FFFFFF;
+
+  .panel {
+    width: 100%;
+    padding-bottom: .2rem;
+
+    .listPanel {
+      position: relative;
+    }
+
+    .list {
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid #eeeeee;
+      
+      &:after {
+        display: block;
+        content: '';
+        clear: both;
+      }
+
+      .thumb {
+        width: 2.6rem;
+        height: 2.6rem;
+        overflow: hidden;
+        float: left;
+      }
+
+      .detail {
+        height: 2.6rem;
+        max-height: 2.6rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 0 .16rem;
+
+        .price {
+          padding-top: .5rem;
+
+          .icon {
+            width: .25rem;
+            height: .25rem;
+          }
+        }
+      }
+    }
+    .cart {
+      position: absolute;
+      right: .16rem;
+      bottom: .24rem;
+      width: .6rem;
+    }
+  }
+}

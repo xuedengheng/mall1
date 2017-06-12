@@ -1,0 +1,66 @@
+.root {
+  width: 100%;
+
+  .list {
+    display: flex;
+    height: .88rem;
+    align-items: center;
+    background-color: #FFFFFF;
+
+    .icon {
+      width: 1rem;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: .4rem;
+        height: auto;
+      }
+    }
+
+    .description {
+      display: flex;
+      flex-grow: 1;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eeeeee;
+      height: 100%;
+
+      .title {
+        font-size: .3rem;
+        color: #333;
+      }
+
+      .goDetail {
+        padding-right: .24rem;
+
+        .price {
+          font-size: .28rem;
+          color: #828282;
+          margin-right: .15rem;
+        }
+
+        .message {
+          width: .5rem;
+          height: .5rem;
+          display: inline-block;
+          border-radius: 50%;
+          background-color: #fc6c26;
+          color: #FFFFFF;
+          margin-right: .15rem;
+          text-align: center;
+          line-height: .5rem;
+        }
+
+        i {
+          width: .14rem;
+          height: .28rem;
+          display: inline-block;
+          vertical-align: sub;
+        }
+      }
+    }
+  }
+}

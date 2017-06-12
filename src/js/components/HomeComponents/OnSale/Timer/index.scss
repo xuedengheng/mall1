@@ -1,0 +1,46 @@
+.panel {
+  width: 100%;
+
+  .imgDiv {
+    position: relative;
+    width: 100%;
+    height: 46.933vw;
+    overflow: hidden;
+    img {
+      height: 100%;
+    }
+
+    .triangle {
+      position: absolute;
+      bottom: -.05rem;
+      left: .24rem;
+      border-bottom-color: #FFFFFF;
+    }
+  }
+  .detail {
+    padding: .2rem .24rem;
+
+    .title {
+      padding-bottom: .1rem;
+    }
+
+    .counter {
+      color: #747474;
+      font-size: .24rem !important;
+
+      .saling {
+        display: inline-block;
+        width: .24rem;
+        height: .26rem;
+        background: url("../../../../../images/home/Home-page_selling_icon_clock.png") no-repeat;
+        background-size: 100%;
+        vertical-align: sub;
+        margin-right: .1rem;
+      }
+
+      .time {
+        color: #fc6c26;
+      }
+    }
+  }
+}

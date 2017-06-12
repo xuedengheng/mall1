@@ -1,0 +1,16 @@
+.root {
+  background-color: #ffffff;
+
+  .detail {
+    min-height: 75vh;
+    width: 100%;
+    img {
+      width: 100%!important;
+      height: auto;
+      vertical-align: bottom;
+    }
+    table {
+      width: 100%!important;
+    }
+  }
+}

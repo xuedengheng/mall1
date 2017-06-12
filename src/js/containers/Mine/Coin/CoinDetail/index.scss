@@ -1,0 +1,87 @@
+.Alltotle {
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+
+.totle {
+  width: 100%;
+  text-align: center;
+  background: white;
+  border-top: .01rem solid #dcdcdc;
+  border-bottom: .01rem solid #dcdcdc;
+  .pay {
+    font-size: .3rem;
+    color: #333;
+    padding-top: .3rem;
+    margin-buttom: 20px;
+  }
+  .num {
+    font-size: .6rem;
+    color: #60d876;
+  }
+  .outcome {
+    color: #f44e4e;
+  }
+  .sucess {
+    font-size: .24rem;
+    color: #828282;
+    margin-bottom: 30px;
+  }
+}
+
+.details {
+  width: 100%;
+  padding: .2rem 2%;
+  .First {
+    height: .45rem;
+    display: flex;
+    justify-content: space-between;
+    span:first-child {
+      color: #828282;
+      font-size: .24rem;
+      flex: 1;
+    }
+    span:last-child {
+      color: #333;
+      font-size: .24rem;
+      flex: 5;
+      text-align: right;
+    }
+  }
+  .Scound {
+    width: 100%;
+    color: #333;
+    font-size: .24rem;
+    text-align: left;
+    .span {
+      width: 100%;
+      float: left;
+      text-align: right;
+    }
+  }
+}
+
+.states {
+  width: 100%;
+  padding: .3rem 2%;
+  border-top: 1px solid #dcdcdc;
+  .order {
+    width: 100%;
+    margin-bottom: .2rem;
+    span:first-child {
+      color: #828282;
+      font-size: .24rem;
+      width: 20%;
+      text-align: left;
+      display: inline-block;
+    }
+    span:last-child {
+      color: #333;
+      font-size: .24rem;
+      width: 80%;
+      text-align: right;
+      display: inline-block;
+    }
+  }
+}

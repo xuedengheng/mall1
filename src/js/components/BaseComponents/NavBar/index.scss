@@ -1,0 +1,46 @@
+.root {
+  background-color: #FFFFFF;
+  height: 1.1rem;
+  position: fixed;
+  z-index: 50;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  border-top: 1px solid #dcdcdc;
+}
+
+.home, .cart, .mine, .life {
+  color: #fe681f;
+  &:hover, &:active {
+    color: #fe681f;
+  }
+}
+
+.home i {
+  background: url("../../../../images/base/icon_homepage_highlighted.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cart i {
+  background: url("../../../../images/base/icon_car_highlighted.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.mine i {
+  background: url("../../../../images/base/icon_mine_highlighted.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.life i {
+  background: url("../../../../images/base/icon_life_highlighted.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}

@@ -1,0 +1,81 @@
+.selectbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #eeeeee;
+  overflow: scroll;
+  z-index: 10;
+  .refund {
+    width: 100%;
+    hright: 100%;
+    .refundtype {
+      width: 100%;
+      .refundprompt {
+        display: flex;
+        flex: 1;
+        width: 100%;
+        height: .65rem;
+        line-height: .65rem;
+        padding: 0 .24rem;
+        color: #828282;
+        .required {
+          color: #eb5604;
+        }
+      }
+      .refundmoney {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 0 .24rem;
+        height: .95rem;
+        background: white;
+        & input {
+          height: .7rem;
+          width: 100%;
+          border: none;
+          color: #333;
+          font-size: .28rem;
+        }
+      }
+      .refundaddress {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 0 .24rem;
+        height: .95rem;
+        background: white;
+        .noaddress {
+          color: #888;
+          font-size: .28rem;
+        }
+        .rightarr{
+          position: absolute;
+          right:.24rem;
+          img{
+            width:.15rem;
+            height: .24rem;
+          }
+        }
+        .address {
+          color: #333;
+          font-size: .28rem;
+
+        }
+      }
+    }
+  }
+  .bottomB {
+    position: relative;
+    width: 100vw;
+    height: .98rem;
+    bottom: 0;
+    left: 0;
+  }
+  .active {
+    transform: translate3d(0, 0, 0);
+  }
+}

@@ -1,0 +1,31 @@
+.root {
+  width: 100%;
+  background-color: #FFFFFF;
+  padding-bottom: .55rem;
+
+  .slideItem {
+    padding: 0 .1rem;
+
+    .imgDiv {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-top: 100%;
+      overflow: hidden;
+      img {
+        position: absolute;
+        top: 0;
+      }
+    }
+
+    .detail {
+      padding-top: .1rem;
+
+      .icon {
+        width: .24rem;
+        height: .24rem;
+        vertical-align: sub;
+      }
+    }
+  }
+}

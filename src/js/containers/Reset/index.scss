@@ -1,0 +1,106 @@
+.root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .inputPanel {
+    padding: 0 .24rem;
+    flex: 1;
+    .phone {
+      margin-bottom: .2rem;
+    }
+
+    .yanzheng {
+      margin-bottom: .2rem;
+    }
+
+    .password {
+      margin-bottom: .2rem;
+    }
+
+    .searchInput {
+      background: rgba(255, 255, 255, .5);
+      opacity: .5;
+      height: .88rem;
+      flex-grow: 1;
+      border-radius: .1rem;
+      display: flex;
+      align-items: center;
+
+      span {
+        width: .265rem;
+        margin: 0 .24rem;
+        img {
+          width: 100%;
+        }
+      }
+
+      input {
+        font-size: .3rem;
+        border: none;
+        color: #000;
+        background: none;
+        flex-grow: 1;
+      }
+
+      .yanzheng {
+        width: 1.2rem;
+        height: .6rem;
+        margin: 0 .22rem;
+        border: 1px solid #fe5400;
+        border-radius: 8px;
+        line-height: .6rem;
+        background: none;
+        text-align: center;
+        color: #fe5400;
+      }
+    }
+
+    .agree {
+      margin-bottom: .4rem;
+
+      .agreeBox {
+        width: .3rem;
+        height: .3rem;
+        display: inline-block;
+        vertical-align: sub;
+        margin-right: .1rem;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .resetBtn {
+      font-size: .32rem;
+      border-radius: .09rem;
+      margin-top: .2rem;
+      height: .88rem;
+      line-height: .88rem;
+      text-align: center;
+      color: #FFFFFF;
+      background-color: #fe5400;
+    }
+  }
+
+  .backLoginPanel {
+    padding: 0 .24rem;
+    flex: 0 0 .8rem;
+    display: flex;
+    justify-content: flex-end;
+    .backLogin {
+      font-size: .28rem;
+      padding: .2rem;
+
+      i {
+        width: .14rem;
+        height: .28rem;
+        display: inline-block;
+        vertical-align: sub;
+        margin-left: .1rem;
+      }
+    }
+  }
+}

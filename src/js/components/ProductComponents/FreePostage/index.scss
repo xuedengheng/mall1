@@ -1,0 +1,11 @@
+.root {
+  display: flex;
+  height: .8rem;
+  padding: 0 .24rem;
+  align-items: center;
+  background-color: #ffffff;
+  .title {
+    flex: 0 0 1.3rem;
+    color: #bbbbbb;
+  }
+}

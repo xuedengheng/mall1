@@ -1,0 +1,23 @@
+.root {
+  width: 100%;
+  background-color: #FFFFFF;
+
+  .panel {
+    width: 100%;
+    padding-bottom: .2rem;
+
+    &:after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+
+    .list {
+      display: block;
+      width: 33.333vw;
+      height: 25vw;
+      background-color: #f7f7f7;
+      float: left;
+    }
+  }
+}

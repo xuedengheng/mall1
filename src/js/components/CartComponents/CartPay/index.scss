@@ -1,0 +1,53 @@
+.root {
+  width: 100%;
+
+  .fHeight {
+    width: 100%;
+    height: 1rem;
+  }
+
+  .content {
+    width: 100%;
+    height: 1rem;
+    background-color: #f7f7f7;
+
+    .checkAll {
+      height: 100%;
+      padding: 0 .08rem;
+
+      .checkBox {
+        width: .72rem;
+        height: 100%;
+
+        img {
+          width: .4rem;
+          height: .4rem;
+        }
+      }
+    }
+
+    .ctrl {
+      flex-grow: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      .allPrice {
+        padding-right: .2rem;
+        text-align: right;
+      }
+
+      .pay {
+        background-color: #fe5400;
+        width: 2rem;
+        height: 100%;
+      }
+
+      .disable {
+        background-color: #bbbbbb;
+        color: #FFFFFF;
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+.root {
+  width: 100%;
+  height: 1.6rem;
+
+  .checkPanel {
+    width: 1rem;
+    height: 100%;
+    float: left;
+
+    img {
+      width: .4rem;
+      height: .4rem;
+    }
+  }
+
+  .detail {
+    flex-grow: 1;
+    height: 100%;
+    border-top: 1px solid #eeeeee;
+
+    .title {
+      width: 65vw;
+    }
+
+    .thumb {
+      width: 1.2rem;
+      height: 1.2rem;
+      background-color: #FFFFFF;
+    }
+
+    .info {
+      flex-grow: 1;
+      height: 100%;
+      padding: .2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .price {
+        flex-grow: 1;
+        align-items: flex-end;
+
+        .numCtrl {
+          width: 2rem;
+          height: .6rem;
+          border: 1px solid #eeeeee;
+          border-radius: 6px;
+          display: flex;
+
+          .num {
+            width: .6rem;
+            height: .6rem;
+            border-left: 1px solid #eeeeee;
+            border-right: 1px solid #eeeeee;
+          }
+
+          .des, .add {
+            width: .7rem;
+            height: 100%;
+
+            img {
+              width: .2rem;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}

@@ -1,0 +1,78 @@
+.addressWrapper{
+  width: 100%;
+  .addressItem{
+    width: 100%;
+    .addressLink {
+      display: flex;
+      width: 100%;
+      min-height: 1.6rem;
+      padding: .2rem .24rem;
+      border-bottom: 1px solid #dddddd;
+      background: #FFFFFF;
+      color: #828282;
+      &.active {
+        background: #fc6c26;
+        color: #FFFFFF;
+        border: none;
+        .header {
+          color: #FFFFFF;
+        }
+      }
+      .leftContent {
+        flex: 1;
+        position: relative;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        display: flex;
+        .header {
+          font-size: 0;
+          color: #333;
+          &:after {
+            display: block;
+            content: "";
+            clear: both;
+          }
+          .name {
+            line-height: .28rem;
+            font-size: .28rem;
+            float: left;
+          }
+          .phone {
+            line-height: .28rem;
+            font-size: .28rem;
+            position: absolute;
+            right: 0rem;
+          }
+        }
+        .address {
+          margin-top: .05rem;
+          font-size: .24rem;
+          word-break: break-all;
+        }
+        .idNo {
+          margin-top: .05rem;
+          line-height: .24rem;
+          font-size: .24rem;
+        }
+      }
+      .rightContent {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 0 0 .24rem;
+        i {
+          width: .14rem;
+          height: .24rem;
+        }
+      }
+    }
+  }
+}
+.bottomB {
+  position: relative;
+  width: 100vw;
+  height: .98rem;
+  bottom: 0;
+  left: 0;
+}

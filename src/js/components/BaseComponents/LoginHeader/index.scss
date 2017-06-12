@@ -1,0 +1,26 @@
+.showPanel {
+  padding: 0 .24rem;
+
+  .close{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+    span {
+      padding: .25rem 0;
+      padding-right: .25rem;
+      font-size: .3rem;
+      color: #333;
+    }
+  }
+
+  .iconPanel {
+    width: 100%;
+
+    img {
+      width: 24vw;
+      height: 24vw;
+      margin: 11vw auto;
+    }
+  }
+}

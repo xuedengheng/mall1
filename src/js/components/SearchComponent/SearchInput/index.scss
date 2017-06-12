@@ -1,0 +1,34 @@
+.root {
+  background: #ffffff;
+  height: 1.05rem;
+  padding: 0 .2rem;
+  display: flex;
+  align-items: center;
+  .searchInput {
+    background: #eeeeee;
+    height: .7rem;
+    flex-grow: 1;
+    border-radius: .1rem;
+    display: flex;
+    display: -webkit-flex;
+    span {
+      width: .4rem;
+      margin-left: .1rem;
+      img{
+        width: 100%;
+      }
+    }
+
+    input {
+      font-size: .3rem;
+      margin-left: .08rem;
+      background: #eeeeee;
+      border: none;
+    }
+  }
+  .cancel {
+    font-size: .34rem;
+    margin-left: .15rem;
+    color: #fc6c26
+  }
+}

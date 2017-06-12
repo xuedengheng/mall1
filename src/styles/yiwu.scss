@@ -1,0 +1,185 @@
+//易物网图标
+.home {
+  background: url("../images/base/icon_homepage.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cart {
+  background: url("../images/base/icon_car.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.mine {
+  background: url("../images/base/icon_mine.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.life {
+  background: url("../images/base/icon_life.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.YIWU {
+  display: inline-block;
+  background: url('../images/base/icon_yiwu.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.JD {
+  display: inline-block;
+  background: url('../images/base/icon_JD.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.VIP {
+  display: inline-block;
+  background: url('../images/base/icon_vip.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.WY {
+  display: inline-block;
+  background: url('../images/base/Home_icon_wangyi.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.JUMEI {
+  display: inline-block;
+  background: url('../images/base/icon_jumei.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+//登录注册界面背景
+.pageBackground {
+  background: url("../images/login&register/login_bg.png") no-repeat;
+  background-size: cover;
+}
+
+.refresh-text {
+  width: 2.73rem;
+  height: .24rem;
+  margin: auto;
+  background: url("../images/base/refresh_text.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.refresh-icon {
+  width: .3rem;
+  height: .3rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: .15rem;
+  background: url("../images/base/refresh_icon_arrow.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+//解决商品详情图片不能自由缩放的坑
+.detail-swiper {
+  height: 100vw;
+}
+
+//超出规定宽度自动换行
+.break-wrap {
+  white-space: pre-wrap;
+}
+
+//字体样式控制
+.line-throught {
+  text-decoration: line-through;
+}
+
+//loading样式
+.loading-page {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 9999;
+  left: 0
+}
+
+//react-slick样式修改
+.slick-dots {
+  bottom: auto;
+
+  li button:before {
+    font-size: .18rem !important;
+  }
+}
+
+//三角形绘制
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: .175rem solid transparent;
+  border-right: .175rem solid transparent;
+  border-bottom: .25rem solid;
+}
+
+.back-arrow {
+  background: url("../images/login&register/login_register_icon_arrowback.png") no-repeat;
+  background-size: 100%;
+}
+
+.arrow-right {
+  display: inline-block;
+  width: .13rem;
+  height: .24rem;
+  vertical-align: middle;
+  background: url("../images/mine/mine_icon_arrowright.png") no-repeat;
+  background-size: 100%;
+}
+
+.arrow-right-white {
+  background: url("../images/mine/mine_icon_arrowright_white.png") no-repeat;
+  background-size: 100%;
+}
+
+.check {
+  width: .4rem;
+  height: .4rem;
+  background: url("../images/submit_order/pay_icon_check.png") no-repeat;
+  background-size: 100%;
+}
+
+//上边框线
+.border-top {
+  border-top: 1px solid #eeeeee;
+}
+
+.opacity50{
+  opacity: .5;
+}
+
+.empty-box {
+  margin-top: 4.14rem;
+  text-align: center;
+  .pic {
+    width: 2rem;
+    height: 2rem;
+    margin: auto;
+    img {
+      width: 100%;
+    }
+  }
+  .text {
+    margin-top: .2rem;
+    text-align: center;
+    font-size: 24px;
+    color: #828282;
+  }
+}

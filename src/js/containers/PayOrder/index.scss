@@ -1,0 +1,60 @@
+.totalCount{
+  width: 100%;
+  height: .9rem;
+  padding: 0 .24rem;
+  line-height: .9rem;
+  background: #FFFFFF;
+}
+.payWrapper {
+  width: 100%;
+  margin-bottom: .4rem;
+  background: #FFFFFF;
+  .type {
+    display: flex;
+    width: 100%;
+    height: 1rem;
+    border-bottom: 1px solid #eeeeee;
+    &:last-child {
+      border: none;
+    }
+    .checkbox {
+      flex: 0 0 1.14rem;
+      height: 1rem;
+      img {
+        width: .4rem;
+        height: .4rem;
+        margin-left: .24rem;
+        margin-top: .3rem;
+      }
+    }
+    .content {
+      display: flex;
+      flex: 1;
+      height: 1rem;
+      align-items: center;
+      .icon {
+        display: flex;
+        height: 1rem;
+        flex: 0 0 .6rem;
+        align-items: center;
+        margin-right: .2rem;
+        img {
+          width: 100%;
+        }
+      }
+      .detail {
+        font-size: 0;
+        .name {
+          margin-bottom: .1rem;
+          line-height: .28rem;
+          font-size: .28rem;
+        }
+        .description {
+          line-height: .22rem;
+          font-size: .22rem;
+          color: #828282;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,273 @@
+// ReactTransitionGroup 动画
+.router-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.router-enter.router-enter-active {
+  opacity: 1;
+}
+
+.router-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.router-leave.router-leave-active {
+  opacity: 0;
+}
+
+.page-enter {
+  opacity: 0.01;
+  margin-left: 100%;
+  -webkit-transition: all 1.5s;
+  transition: all 1.5s;
+}
+
+.page-enter.page-enter-active {
+  margin-left: 0px;
+  opacity: 1;
+}
+
+.page-leave {
+  opacity: 1;
+  margin-left: 0px;
+  -webkit-transition: all 1.5s;
+  transition: all 1.5s;
+}
+
+.page-leave.page-leave-active {
+  margin-left: -100%;
+  opacity: 0.01;
+}
+
+// 首页导航过场动画
+.swap-enter {
+  opacity: 0.01;
+  transform: translateX(5em);
+  transition: all .5s ease-out;
+}
+
+.swap-enter.swap-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.swap-leave {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all .5s ease-in;
+}
+
+.swap-leave.swap-leave-active {
+  opacity: 0;
+  transform: translateX(-5em);
+}
+
+// message 组件动画
+.message-enter {
+  opacity: 0;
+  transform: translate3d(0,-25px,0);
+}
+.message-enter.message-enter-active {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+  transition-property: transform, opacity;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+}
+.message-leave {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+  transition-property: transform, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+}
+.message-leave.message-leave-active {
+  opacity: 0;
+  transform: translate3d(0,25px,0);
+}
+
+// btns 动画
+.btns-enter {
+  opacity: 0;
+  transform: translate3d(250px,0,0);
+}
+.btns-enter.btns-enter-active {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+  transition-property: transform, opacity;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+}
+.btns-leave {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+  transition-property: transform, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+}
+.btns-leave.btns-leave-active {
+  opacity: 0;
+  transform: translate3d(250px,0,0);
+}
+
+.fade-appear {
+  opacity: 0.01;
+}
+
+.fade-appear.fade-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+@-webkit-keyframes rodal-fade-enter {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes rodal-fade-enter {
+  from {
+    opacity: 0;
+  }
+}
+
+.rodal-fade-enter {
+  -webkit-animation: rodal-fade-enter both ease-in;
+  animation: rodal-fade-enter both ease-in;
+}
+
+@-webkit-keyframes rodal-fade-leave {
+  to {
+    opacity: 0
+  }
+}
+
+@keyframes rodal-fade-leave {
+  to {
+    opacity: 0
+  }
+}
+
+.rodal-fade-leave {
+  -webkit-animation: rodal-fade-leave both ease-out;
+  animation: rodal-fade-leave both ease-out;
+}
+
+/* -- zoom -- */
+@-webkit-keyframes rodal-zoom-enter {
+  from {
+    -webkit-transform: scale(.3);
+    transform: scale(.3);
+  }
+}
+
+@keyframes rodal-zoom-enter {
+  from {
+    -webkit-transform: scale(.3);
+    transform: scale(.3);
+  }
+}
+
+.rodal-zoom-enter {
+  -webkit-animation: rodal-zoom-enter both cubic-bezier(0.4, 0, 0, 1.5);
+  animation: rodal-zoom-enter both cubic-bezier(0.4, 0, 0, 1.5);
+}
+
+@-webkit-keyframes rodal-zoom-leave {
+  to {
+    -webkit-transform: scale3d(.3, .3, 1);
+    transform: scale3d(.3, .3, 1);
+  }
+}
+
+@keyframes rodal-zoom-leave {
+  to {
+    -webkit-transform: scale3d(.3, .3, 1);
+    transform: scale3d(.3, .3, 1);
+  }
+}
+
+.rodal-zoom-leave {
+  -webkit-animation: rodal-zoom-leave both;
+  animation: rodal-zoom-leave both;
+}
+
+/* -- popup -- */
+@-webkit-keyframes rodal-popup-enter {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes rodal-popup-enter {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+.rodal-popup-enter {
+  -webkit-animation: rodal-popup-enter both linear;
+  animation: rodal-popup-enter both linear;
+}
+
+@-webkit-keyframes rodal-popup-leave {
+  to {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes rodal-popup-leave {
+  to {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+.rodal-popup-leave {
+  -webkit-animation: rodal-popup-leave both;
+  animation: rodal-popup-leave both;
+}
+
+/* -- popleft -- */
+@-webkit-keyframes rodal-popleft-enter {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes rodal-popleft-enter {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.rodal-popleft-enter {
+  -webkit-animation: rodal-popleft-enter both linear;
+  animation: rodal-popleft-enter both linear;
+}
+
+@-webkit-keyframes rodal-popleft-leave {
+  to {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes rodal-popleft-leave {
+  to {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.rodal-popleft-leave {
+  -webkit-animation: rodal-popleft-leave both;
+  animation: rodal-popleft-leave both;
+}

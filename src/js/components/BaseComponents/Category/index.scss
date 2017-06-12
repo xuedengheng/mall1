@@ -1,0 +1,34 @@
+.root {
+  background-color: #FFFFFF;
+
+  .name {
+    padding: .2rem;
+    vertical-align: middle;
+    img {
+      width: .24rem;
+      vertical-align: middle;
+      margin-right: 0.15rem;
+    }
+  }
+
+  .panel {
+    width: 25%;
+    display: inline-block;
+    .thumb {
+      display: block;
+      height: 0.94rem;
+      width: 0.94rem;
+      border-radius: 50%;
+      margin: auto;
+      margin-bottom: 0.1rem;
+    }
+
+    .title {
+      width: 80%;
+      margin: auto;
+      line-height: 1;
+      color: #323232;
+      text-align: center;
+    }
+  }
+}

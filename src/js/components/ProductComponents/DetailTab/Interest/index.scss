@@ -1,0 +1,59 @@
+.customUl{
+  display: inline-block;
+  width: 100%;
+  min-height: 75vh;
+
+  .customLi {
+    position: relative;
+    width: 50%;
+    float: left;
+    padding-bottom: .1rem;
+    background-color: #eeeeee;
+
+    .right {
+      position: absolute;
+      width: .7rem;
+      bottom: .4rem;
+      right: .16rem;
+    }
+
+    &:nth-child(odd) {
+      padding-right: .05rem;
+    }
+
+    &:nth-child(even) {
+      padding-left: .05rem;
+    }
+
+    .imgPanel {
+      width: 100%;
+      height: 0;
+      position: relative;
+      padding-top: 100%;
+      overflow: hidden;
+      background-color: #ffffff;
+      img{
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    .detail {
+      width: 100%;
+      padding: .2rem .16rem;
+      background-color: #FFFFFF;
+
+      .control{
+        padding-top: .2rem;
+
+        .icon{
+          width: .3rem;
+          height: .3rem;
+        }
+
+
+      }
+    }
+  }
+}
