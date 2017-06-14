@@ -9,7 +9,7 @@ import {Link} from 'react-router'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as AccountActions from 'actions/AccountActions'
-import {RegExp, urlApi} from 'service'
+import {RegExp, urlApi, Constant} from 'service'
 import styles from './index.scss'
 
 class Login extends Component {
@@ -50,7 +50,7 @@ class Login extends Component {
   handleInput = (type, e) => {
     // 判断 value 是否符合规则
     let value = e.target.value;
-    this.setState({[`${type}`]: value});
+    this.setState({[`${type}`]: RegExp.isLimitInput(type, value)});
   }
 
   login = () => {
@@ -90,7 +90,7 @@ class Login extends Component {
                                 <img src={require("../../../images/login&register/login_icon_user.png")} alt=""/>
                             </span>
                 <input type="text" ref="username" placeholder="手机号" onChange={this.handleInput.bind(this, 'account')}
-                       value={account}/>
+                       value={account} maxLength="11"/>
               </div>
             </div>
             <div className={styles.password}>
@@ -98,7 +98,7 @@ class Login extends Component {
                             <span className="ver-center">
                                 <img src={require("../../../images/login&register/login_icon_password.png")} alt=""/>
                             </span>
-                <input type="password" ref="password" placeholder="登录密码"
+                <input type="password" ref="password" placeholder="登录密码" maxLength="15"
                        onChange={this.handleInput.bind(this, 'password')} value={password}/>
               </div>
             </div>

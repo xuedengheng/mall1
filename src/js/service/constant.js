@@ -34,6 +34,15 @@ export const WAY_YW = "YIWUCOIN";
  * */
 export const WAY_FM = "FEIMA";
 
+//输入框正则限制
+export const MOBILE_PATTERN = 'account';
+export const NAME_PATTERN = 'name';
+export const PWD_PATTERN = 'password';
+export const IDENTITY_PATTERN = 'identity';
+export const MONEY_PATTERN = 'money';
+export const ADDRESS_PATTERN = 'address';
+export const TEXT_PATTERN = 'text';
+
 
 //限时购倒计时状态
 export const DID = 'DID';

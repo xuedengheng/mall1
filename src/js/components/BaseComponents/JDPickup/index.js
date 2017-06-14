@@ -110,20 +110,16 @@ class JDPickup extends Component {
     })
   }
 
-  mobileChange = (e) => {
-    let mobile = e.target.value;
-    if (mobile.length > 11) {
-      return;
+  handleInput = (type, e) => {
+    // 判断 value 是否符合规则
+    let value = e.target.value;
+    if (type === 'mobile') {
+      this.setState({[`${type}`]: RegExp.isLimitInput('account', value)});
+    } else if (type === 'name') {
+      this.setState({contactor: value});
+    } else {
+      this.setState({[`${type}`]: value});
     }
-    this.setState({mobile});
-  }
-
-  nameChange = (e) => {
-    this.setState({contactor: e.target.value});
-  }
-
-  addressChange = (e) => {
-    this.setState({address: e.target.value});
   }
 
   Apply = () => {
@@ -147,7 +143,10 @@ class JDPickup extends Component {
       Toast.info('请选择取件地址');
     } else if (!address) {
       Toast.info('请输入取件详细地址');
-    } else {
+    } else if ((address && !RegExp.isAccepted('text', address)) ||
+      (contactor && !RegExp.isAccepted('text', contactor))) {
+      Toast.info('不能输入敏感符号及表情');
+    }else {
       this.props.refundActions.queryApplyRefund(mySearch);
     }
   }
@@ -173,7 +172,8 @@ class JDPickup extends Component {
               取件联系人<em className={`font-30 ${styles.required}`}>*</em>
             </div>
             <div className={styles.refundmoney}>
-              <input type="text" value={contactor} onChange={this.nameChange.bind(this)} placeholder="请填写联系人姓名"/>
+              <input type="text" value={contactor} onChange={this.handleInput.bind(this, 'name')}
+                     maxLength="20" placeholder="请填写联系人姓名"/>
             </div>
           </div>
           <div className={styles.refundtype}>
@@ -181,7 +181,8 @@ class JDPickup extends Component {
               手机号码<em className={`font-30 ${styles.required}`}>*</em>
             </div>
             <div className={styles.refundmoney}>
-              <input type="number" value={mobile} name="mobile" maxLength="11" onChange={this.mobileChange.bind(this)}
+              <input type="text" value={mobile} name="mobile" maxLength="11"
+                     onChange={this.handleInput.bind(this, 'mobile')}
                      placeholder="请填写联系人手机号码"/>
             </div>
           </div>
@@ -205,7 +206,6 @@ class JDPickup extends Component {
                       <img src={require('../../../../images/mine/refund/rightarr.png')} alt=""/>
                     </span>
                   </div>
-                  {/*<div className={styles.rightrarr}></div>*/}
                 </div>}
             </div>
           </div>
@@ -214,7 +214,8 @@ class JDPickup extends Component {
               详细地址<em className={`font-30 ${styles.required}`}>*</em>
             </div>
             <div className={styles.refundmoney}>
-              <input type="text" value={address} onChange={this.addressChange.bind(this)} placeholder="请填写取件详细地址"/>
+              <input type="text" value={address} onChange={this.handleInput.bind(this, 'address')}
+                     maxLength="150" placeholder="请填写取件详细地址"/>
             </div>
           </div>
         </div>

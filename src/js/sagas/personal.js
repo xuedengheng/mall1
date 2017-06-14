@@ -27,7 +27,7 @@ export function* editPersonal(action) {
     if (json.success) {
       let userInfo = JSON.stringify(json.userInfo);
       localStorage.setItem('userInfo', userInfo);
-      yield[put({type: QUERY_PERSONAL_SUCCESS})]
+      yield[put({type: QUERY_PERSONAL_SUCCESS,sex:json.userInfo.sex})]
       if (action.data.nickName) {
         history.goBack();
       }

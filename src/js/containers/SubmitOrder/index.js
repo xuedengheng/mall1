@@ -7,7 +7,7 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Link, hashHistory} from 'react-router'
 import styles from './index.scss'
-import {api, urlApi, fetchApi, dateUtil, getQueryString} from 'service'
+import {api, urlApi, fetchApi, dateUtil, getQueryString, RegExp} from 'service'
 import _ from 'lodash'
 import {WarningModal} from 'components';
 import * as AddressActions from 'actions/AddressActions'
@@ -48,7 +48,8 @@ class SubmitOrder extends Component {
       newComerDiscount: null,
       deductionDiscount: null,
       activityId: null,
-      activityType: null
+      activityType: null,
+      isChecked: ''
     }
   }
 
@@ -238,7 +239,7 @@ class SubmitOrder extends Component {
     } else {
       postPromotions = [...this.props.postPromotions, {type: 'COUPON', coupons: [selectedCoupon]}]
     }
-    this.setState({selectedCoupon, couponSelectVisible: false});
+    this.setState({selectedCoupon, couponSelectVisible: false, isChecked: ''});
     this.calculate(postPromotions)
   }
 
@@ -248,7 +249,7 @@ class SubmitOrder extends Component {
       postPromotions = [...this.props.postPromotions.filter(promo => promo.type !== 'COUPON')]
       this.calculate(postPromotions)
     }
-    this.setState({selectedCoupon: null, couponSelectVisible: false});
+    this.setState({selectedCoupon: null, couponSelectVisible: false, isChecked: -1});
   }
 
   calculate = postPromotions => {
@@ -283,7 +284,9 @@ class SubmitOrder extends Component {
       _.remove(item.cartDetails, (skus) => {
         return notValid.indexOf(skus.cartDetailId) > -1
       })
-      _.remove(this.order, (store) => {
+    })
+    this.order.map(() => {
+      _.remove(this.order, store => {
         return !store.cartDetails || store.cartDetails.length === 0
       })
     })
@@ -343,7 +346,11 @@ class SubmitOrder extends Component {
         }
       }
     }
-    this.props.submitOrderActions.submitOrder(params, orderSkuDTOs, mode)
+    if (RegExp.isAccepted('text',remarks)) {
+      this.props.submitOrderActions.submitOrder(params, orderSkuDTOs, mode)
+    }else{
+      Toast.info("不能输入敏感字符及表情");
+    }
   }
 
   render() {
@@ -359,7 +366,8 @@ class SubmitOrder extends Component {
       notValidVisible,
       remarks,
       selectedCoupon,
-      couponSelectVisible
+      couponSelectVisible,
+      isChecked
     } = this.state;
     const deductPromo = _.find(promotionDiscountDTOs, promo => promo.type === 'DEDUCTION');
     const newComerPromo = _.find(promotionDiscountDTOs, promo => promo.type === 'NEW_COMER');
@@ -504,7 +512,8 @@ class SubmitOrder extends Component {
         <AddressSelect visible={addressVisible} addresses={addresses ? addresses : null}
                        close={this.close} handleClick={this.addressChecked}/>
         <CouponSelect visible={couponSelectVisible} usableCoupon={usableCoupon} unusableCoupon={unusableCoupon}
-                      close={this.close} handleSelect={this.selectCoupon} handleNouse={this.handleNouse}/>
+                      close={this.close} handleSelect={this.selectCoupon} handleNouse={this.handleNouse}
+                      isChecked={isChecked}/>
         <WarningModal visible={notValidVisible} onCancel={this.closeNotValid} onRemove={this.removeNotValid}
                       orderData={data} notValid={notValid}/>
         {/*<Prompt message={this.checkoutBack}/>*/}

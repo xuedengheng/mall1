@@ -11,7 +11,7 @@ export const queryPersonal = data => ({
   type: QUERY_PERSONAL,
   data
 })
-export const queryPersonalSuccess = () => ({
+export const queryPersonalSuccess = (sex) => ({
   type: QUERY_PERSONAL_SUCCESS
 })
 

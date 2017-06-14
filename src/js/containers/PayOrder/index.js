@@ -20,13 +20,13 @@ import {
 } from 'components'
 
 const TYPE = [
-  {
-    type: Constant.WAY_WX,
-    name: '微信支付',
-    description: '需安装微信客户端',
-    check: false,
-    icon: require('../../../images/submit_order/pay_icon_payment_wechat.png')
-  },
+  // {
+  //   type: Constant.WAY_WX,
+  //   name: '微信支付',
+  //   description: '需安装微信客户端',
+  //   check: false,
+  //   icon: require('../../../images/submit_order/pay_icon_payment_wechat.png')
+  // },
   {
     type: Constant.WAY_FM,
     name: '飞马支付',

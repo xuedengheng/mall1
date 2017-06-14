@@ -3,8 +3,8 @@
  */
 import React, {Component} from 'react';
 import styles from './index.scss'
-
-
+import {RegExp} from 'service';
+import {Toast} from 'antd-mobile';
 
 class SearchInput extends Component {
   state = {
@@ -37,17 +37,25 @@ class SearchInput extends Component {
 
   search = () => {
     this.refs.search.blur();
-    let {value} = this.refs.search;
-    value = value.trim();
-    let {historyItems} = localStorage;
-    if (historyItems === undefined) {
-      localStorage.historyItems = value;
+    if (RegExp.isAccepted('text', this.state.mySearch)) {
+
+      let {value} = this.refs.search;
+      value = value.trim();
+      let {historyItems} = localStorage;
+      if (historyItems === undefined) {
+        localStorage.historyItems = value;
+      } else {
+        const onlyItem = historyItems.split('|').filter(e => e != value);
+        if (onlyItem.length >= 10) {
+          onlyItem.splice(9, onlyItem.length - 9);
+        }
+        if (onlyItem.length > 0) historyItems = value + '|' + onlyItem.join('|');
+        localStorage.historyItems = historyItems;
+      }
+      this.props.search(value);
     } else {
-      const onlyItem = historyItems.split('|').filter(e => e != value);
-      if (onlyItem.length > 0) historyItems = value + '|' + onlyItem.join('|');
-      localStorage.historyItems = historyItems;
+      Toast.info('不能输入敏感字符及表情');
     }
-    this.props.search(value);
   }
 
   render() {

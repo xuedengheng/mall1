@@ -49,6 +49,10 @@ class Personal extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({sex: nextProps.sex === 'MALE' ? '男' : '女'});
+  }
+
   onChange = (value) => {
     this.setState({
       value,
@@ -164,7 +168,7 @@ class Personal extends Component {
 
   updatePersonal = (sexInfo) => {
     this.props.personalActions.queryPersonal({sex: sexInfo[0]});
-    this.setState({sex: sexInfo[0] === 'MALE' ? '男' : '女'});
+    // this.setState({sex: sexInfo[0] === 'MALE' ? '男' : '女'});
   }
 
 

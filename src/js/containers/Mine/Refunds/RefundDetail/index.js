@@ -33,7 +33,7 @@ class RefundDetail extends Component {
     if (detail.status === 'PENDING_RETURN' && detail.platform !== 'JD') {
       hashHistory.push(`/mine/applyrefund/${detail.requestId}/refundinfo`);
     } else if (detail.status === 'PENDING_RETURN' && detail.platform === 'JD') {
-      this.setState({visible: true});
+    this.setState({visible: true});
     } else if (detail.status === 'IN_PROGRESSING') {
       hashHistory.push(`/mine/applyrefund/${detail.requestId}`);
     } else if (detail.status === 'USER_RETURNED') {
@@ -68,38 +68,38 @@ class RefundDetail extends Component {
         <div className={styles.container}>
           <div className={styles.headWrapper}>
             <div className={styles.statusWrapper}>
-                            <span className={styles.icon}>
-                                {
-                                  detail.status === 'IN_PROGRESSING' &&
-                                  <img className="img-responsive"
-                                       src={require('../../../../../images/mine/refund/-refund_icon_review.png')}
-                                       alt=""/>
-                                }
-                              {
-                                (detail.status === 'USER_RETURNED' || detail.status === 'PENDING_RETURN') &&
-                                <img className="img-responsive"
-                                     src={require('../../../../../images/mine/refund/-refund_icon_-return-goods.png')}
-                                     alt=""/>
-                              }
-                              {
-                                detail.status === 'PENDING_REFUND' &&
-                                <img className="img-responsive"
-                                     src={require('../../../../../images/mine/refund/-refund_icon_-refund.png')}
-                                     alt=""/>
-                              }
-                              {
-                                detail.status === 'REFUNDED' &&
-                                <img className="img-responsive"
-                                     src={require('../../../../../images/mine/refund/-refund_icon_-refund-success.png')}
-                                     alt=""/>
-                              }
-                              {
-                                detail.status === 'REJECT' &&
-                                <img className="img-responsive"
-                                     src={require('../../../../../images/mine/refund/refund-_icon_refund-failed.png')}
-                                     alt=""/>
-                              }
-                            </span>
+              <span className={styles.icon}>
+                {
+                  detail.status === 'IN_PROGRESSING' &&
+                  <img className="img-responsive"
+                       src={require('../../../../../images/mine/refund/-refund_icon_review.png')}
+                       alt=""/>
+                }
+                {
+                  (detail.status === 'USER_RETURNED' || detail.status === 'PENDING_RETURN') &&
+                  <img className="img-responsive"
+                       src={require('../../../../../images/mine/refund/-refund_icon_-return-goods.png')}
+                       alt=""/>
+                }
+                {
+                  detail.status === 'PENDING_REFUND' &&
+                  <img className="img-responsive"
+                       src={require('../../../../../images/mine/refund/-refund_icon_-refund.png')}
+                       alt=""/>
+                }
+                {
+                  detail.status === 'REFUNDED' &&
+                  <img className="img-responsive"
+                       src={require('../../../../../images/mine/refund/-refund_icon_-refund-success.png')}
+                       alt=""/>
+                }
+                {
+                  detail.status === 'REJECT' &&
+                  <img className="img-responsive"
+                       src={require('../../../../../images/mine/refund/refund-_icon_refund-failed.png')}
+                       alt=""/>
+                }
+              </span>
               <span className="font-30">{detail.shortcut && detail.shortcut.title}</span>
             </div>
             <p className={styles.content}

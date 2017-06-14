@@ -51,27 +51,27 @@ export default class SearchHistory extends Component {
   }
 
   render() {
-    const {historyItems,visible} = this.state;
+    const {historyItems, visible} = this.state;
     const {search} = this.props;
     const TIPS = DeleteTips;
     return (
       <div className={styles.root}>
         <div className={styles.header}>
           <div className={styles.headerLeft}>
-                        <span className={`ver-center ${styles.imgSpan}`}>
-                            <img className="img-responsive"
-                                 src={require('../../../../images/home/searchPage/search_icon_searchhistory.png')}
-                                 alt=""/>
-                        </span>
+            <span className={`ver-center ${styles.imgSpan}`}>
+              <img className="img-responsive"
+                   src={require('../../../../images/home/searchPage/search_icon_searchhistory.png')}
+                   alt=""/>
+            </span>
             <span>
-                            搜索历史
-                        </span>
+              搜索历史
+            </span>
           </div>
           <div className={styles.headerRight} onClick={::this.deleteHistorys}>
-                        <span className="ver-center">
-                            <img className="img-responsive"
-                                 src={require('../../../../images/home/searchPage/search_icon_delete.png')} alt=""/>
-                        </span>
+            <span className="ver-center">
+              <img className="img-responsive"
+                   src={require('../../../../images/home/searchPage/search_icon_delete.png')} alt=""/>
+            </span>
           </div>
         </div>
         {
@@ -79,19 +79,19 @@ export default class SearchHistory extends Component {
               <div className={styles.container} key={index} onClick={search.bind(this, item)}>
                 <div className={styles.list}>
                   <div className={styles.listLeft}>
-                            <span className={`ver-center ${styles.imgSpan}`}>
-                                <img className="img-responsive"
-                                     src={require('../../../../images/home/searchPage/search_icon_historyclock.png')}
-                                     alt=""/>
-                            </span>
+                    <span className={`ver-center ${styles.imgSpan}`}>
+                      <img className="img-responsive"
+                           src={require('../../../../images/home/searchPage/search_icon_historyclock.png')}
+                           alt=""/>
+                    </span>
                     <span>{item}</span>
                   </div>
                   <div className={styles.listRight}>
-                            <span className="ver-center">
-                                <img className="img-responsive"
-                                     src={require('../../../../images/home/searchPage/search_icon_arrowright.png')}
-                                     alt=""/>
-                            </span>
+                    <span className="ver-center">
+                      <img className="img-responsive"
+                           src={require('../../../../images/home/searchPage/search_icon_arrowright.png')}
+                           alt=""/>
+                    </span>
                   </div>
                 </div>
               </div>

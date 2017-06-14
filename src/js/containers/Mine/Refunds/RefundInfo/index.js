@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {GoBack, SetHelmet, Loading, FooterBox, ConfirmModal} from 'components';
 import styles from './index.scss';
-import {Tool, urlApi, fetchApi, Constant} from 'service';
+import {Tool, urlApi, fetchApi, Constant, RegExp} from 'service';
 
 import * as RefundsAction from 'actions/RefundsActions';
 import {Toast, Picker, List, AppRegistry} from 'antd-mobile';
@@ -29,7 +29,7 @@ class RefundInfo extends Component {
 
   setNum = e => {
     let expressNum = e.target.value;
-    this.setState({expressNum});
+    this.setState({expressNum: RegExp.isLimitInput('identity', expressNum)});
   }
 
   Submit = () => {
@@ -85,7 +85,7 @@ class RefundInfo extends Component {
               快递单号<em className={`font-30 ${styles.required}`}>*</em>
             </div>
             <div className={styles.refundmoney}>
-              <input type="text" value={expressNum} onChange={this.setNum} placeholder="请填写快递单号"/>
+              <input type="text" value={expressNum} maxLength="20" onChange={this.setNum} placeholder="请填写快递单号"/>
             </div>
           </div>
         </div>

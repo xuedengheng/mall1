@@ -84,12 +84,12 @@ class ApplyRefund extends Component {
 
   moneyChange = (e) => {
     let refundAmount = e.target.value;
-    if(refundAmount.indexOf('.')){
+    if (refundAmount.indexOf('.')) {
       if (refundAmount.split('.').length === 2 && refundAmount.split('.')[1].length > 2) {
         return;
       }
     }
-    this.setState({refundAmount})
+    this.setState({refundAmount: RegExp.isLimitInput('money', refundAmount)})
   }
 
   numChange = (e) => {
@@ -207,6 +207,8 @@ class ApplyRefund extends Component {
       Toast.info('请选择收货状态');
     } else if (!remark) {
       Toast.info('请输入退款原因');
+    } else if (remark&&!RegExp.isAccepted('text',remark)) {
+      Toast.info('不能输入敏感字符及表情');
     } else if (!refundAmount) {
       Toast.info('请输入退款金额');
     } else if (refundAmount && parseFloat(refundAmount) > (price ? price : payPrice) * refundNumber) {
