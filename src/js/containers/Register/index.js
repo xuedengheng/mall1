@@ -25,7 +25,7 @@ class Register extends Component {
     this.timer = null;
     this.state = {
       mobile: mobile ? mobile : '',
-      password: password ? password : '',
+      password: password ? password :'',
       verifyCode: verifyCode ? verifyCode : '',
       isChecked: false,
       vcType: 'REG',
@@ -74,13 +74,11 @@ class Register extends Component {
     const {mobile, password, verifyCode, isChecked} = this.state;
     let res = null;
 
-    if (!mobile) {
-      res = "请输入手机号码"
-    } else if (!RegExp.isMobile(mobile)) {
+    if (!RegExp.isMobile(mobile)) {
       res = "请输入正确手机号"
-    } else if (!password || password.length < 6 || password.length > 15) {
+    } else if (password === null || password.length < 6 || password.length > 15) {
       res = "请输入密码（6-15字符）"
-    } else if (!verifyCode) {
+    } else if (verifyCode === null) {
       res = "请输入验证码"
     } else if (!isChecked) {
       res = "请查看用户协议"
@@ -107,11 +105,7 @@ class Register extends Component {
   handleInput = (type, e) => {
     // 判断 value 是否符合规则
     let value = e.target.value;
-    if (type === 'mobile'||type === 'verifyCode') {
-      this.setState({[`${type}`]: RegExp.isLimitInput('account', value)});
-    } else {
-      this.setState({[`${type}`]: RegExp.isLimitInput(type, value)});
-    }
+    this.setState({[`${type}`]: value});
   }
 
   toggleIsChecked = () => {
@@ -149,7 +143,7 @@ class Register extends Component {
 
   render() {
     const {mobile, password, verifyCode, ready, vcTimer, isChecked} = this.state;
-    const verifyCodeText = ready ? '获取' : vcTimer + 's';
+    const verifyCodeText = ready  ? '获取' : vcTimer + 's';
 
     return (
       <div className={`pageBackground ${styles.root}`}>
@@ -161,23 +155,21 @@ class Register extends Component {
         <div className={styles.inputPanel}>
           <div className={styles.phone}>
             <div className={styles.searchInput}>
-              <span className="ver-center">
-                <img src={require("../../../images/login&register/login_register_icon_phone.png")}
-                     alt=""/>
-              </span>
-              <input type="text" placeholder="手机号" ref="mobileInput" value={mobile} maxLength="11"
-                     onChange={this.handleInput.bind(this, 'mobile')}/>
+                            <span className="ver-center">
+                                <img src={require("../../../images/login&register/login_register_icon_phone.png")}
+                                     alt=""/>
+                            </span>
+              <input type="text" placeholder="手机号" ref="mobileInput" value={mobile} onChange={this.handleInput.bind(this, 'mobile')}/>
             </div>
           </div>
           <div className={styles.yanzheng}>
             <div className={styles.searchInput}>
-              <span className="ver-center">
-                <img
-                  src={require("../../../images/login&register/login_register_icon_securitycode.png")}
-                  alt=""/>
-              </span>
-              <input type="text" placeholder="请输入验证码" maxLength="6" value={verifyCode}
-                     onChange={this.handleInput.bind(this, 'verifyCode')}/>
+                            <span className="ver-center">
+                                <img
+                                  src={require("../../../images/login&register/login_register_icon_securitycode.png")}
+                                  alt=""/>
+                            </span>
+              <input type="text" placeholder="请输入验证码" value={verifyCode} onChange={this.handleInput.bind(this, 'verifyCode')}/>
               <button className={styles.yanzheng} disabled={!ready} onClick={this.onVerifyCodeClick.bind(this)}>
                 {verifyCodeText}
               </button>
@@ -185,27 +177,27 @@ class Register extends Component {
           </div>
           <div className={styles.password}>
             <div className={styles.searchInput}>
-              <span className="ver-center">
-                <img src={require("../../../images/login&register/login_icon_password.png")} alt=""/>
-              </span>
+                            <span className="ver-center">
+                                <img src={require("../../../images/login&register/login_icon_password.png")} alt=""/>
+                            </span>
               <input type="password" ref="password" value={password} placeholder="登录密码（6-15字符）"
-                     maxLength="15" onChange={this.handleInput.bind(this, 'password')}/>
+                     onChange={this.handleInput.bind(this, 'password')}/>
             </div>
           </div>
           <div className={styles.agree}>
-            <span className="font-26 color333" onClick={this.toggleIsChecked.bind(this)}>
-              <span className={styles.agreeBox}>
-                {
-                  isChecked ?
-                    <img src={require('../../../images/login&register/login_register_agree_yes.png')}
-                         alt=""/>
-                    :
-                    <img src={require('../../../images/login&register/login_register_agree_no.png')}
-                         alt=""/>
-                }
-              </span>
-              已阅读并同意
-            </span>
+                        <span className="font-26 color333" onClick={this.toggleIsChecked.bind(this)}>
+                            <span className={styles.agreeBox}>
+                            {
+                              isChecked ?
+                                <img src={require('../../../images/login&register/login_register_agree_yes.png')}
+                                     alt=""/>
+                                :
+                                <img src={require('../../../images/login&register/login_register_agree_no.png')}
+                                     alt=""/>
+                            }
+                            </span>
+                            已阅读并同意
+                        </span>
             <span onClick={this.watchAgreePage} className="font-26 color-fc6">《易物网用户协议》</span>
           </div>
           <div className={styles.registerBtn} onClick={this.onRegisterClick.bind(this)}>
@@ -213,9 +205,9 @@ class Register extends Component {
           </div>
         </div>
         <div className={styles.backLoginPanel}>
-          <span className={styles.backLogin} onClick={::this.back}>
-            <i className="back-arrow"/>返回登录
-          </span>
+                    <span className={styles.backLogin} onClick={::this.back}>
+                        <i className="back-arrow"/>返回登录
+                    </span>
         </div>
       </div>
     )

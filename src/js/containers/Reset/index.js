@@ -18,8 +18,8 @@ class Reset extends Component {
     this.timer = null;
     this.state = {
       mobile: '',
-      password: '',
-      verifyCode: '',
+      password: null,
+      verifyCode: null,
       vcType: 'RESET',
       vcTimer: 60,
       ready: true
@@ -61,9 +61,9 @@ class Reset extends Component {
     let res = null;
     if (!RegExp.isMobile(mobile)) {
       res = "请输入正确手机号"
-    } else if (!password || password.length < 6 || password.length > 15) {
+    } else if (password === null || password.length < 6 || password.length > 15) {
       res = "请输入密码（6-15字符）"
-    } else if (!verifyCode) {
+    } else if (verifyCode === null) {
       res = "请输入验证码"
     } else {
       res = true
@@ -87,11 +87,7 @@ class Reset extends Component {
   handleInput = (type, e) => {
     // 判断 value 是否符合规则
     let value = e.target.value;
-    if (type === 'mobile' || type === 'verifyCode') {
-      this.setState({[`${type}`]: RegExp.isLimitInput('account', value)});
-    } else {
-      this.setState({[`${type}`]: RegExp.isLimitInput(type, value)});
-    }
+    this.setState({[`${type}`]: value});
   }
 
   onResetClick = (e) => {
@@ -107,15 +103,11 @@ class Reset extends Component {
   }
 
   back = () => {
-    hashHistory.goBack();
-  }
-
-  back2 = () => {
-    hashHistory.go(-2);
+    hashHistory.goBack()
   }
 
   render() {
-    const {ready, vcTimer, mobile, verifyCode, password} = this.state;
+    const {ready, vcTimer} = this.state;
     const verifyCodeText = ready ? '获取' : vcTimer + 's';
     return (
       <div className={`pageBackground ${styles.root}`}>
@@ -123,27 +115,26 @@ class Reset extends Component {
           this.props.isFetching && <Loading />
         }
         <SetHelmet title="重设密码"/>
-        <LoginHeader back={::this.back2}/>
+        <LoginHeader back={::this.back}/>
         <div className={styles.inputPanel}>
           <div className={styles.phone}>
             <div className={styles.searchInput}>
-              <span className="ver-center">
-                <img src={require("../../../images/login&register/login_register_icon_phone.png")}
-                     alt=""/>
-              </span>
+                            <span className="ver-center">
+                                <img src={require("../../../images/login&register/login_register_icon_phone.png")}
+                                     alt=""/>
+                            </span>
               <input type="text" placeholder="注册手机号" maxLength="11" ref="mobileInput"
-                     value={mobile} onChange={this.handleInput.bind(this, 'mobile')}/>
+                     onChange={this.handleInput.bind(this, 'mobile')}/>
             </div>
           </div>
           <div className={styles.yanzheng}>
             <div className={styles.searchInput}>
-              <span className="ver-center">
-                <img
-                  src={require("../../../images/login&register/login_register_icon_securitycode.png")}
-                  alt=""/>
-              </span>
-              <input type="text" maxLength="6" placeholder="请输入验证码" value={verifyCode}
-                     onChange={this.handleInput.bind(this, 'verifyCode')}/>
+                            <span className="ver-center">
+                                <img
+                                  src={require("../../../images/login&register/login_register_icon_securitycode.png")}
+                                  alt=""/>
+                            </span>
+              <input type="text" placeholder="请输入验证码" onChange={this.handleInput.bind(this, 'verifyCode')}/>
               <button className={styles.yanzheng} disabled={!ready} onClick={this.onVerifyCodeClick.bind(this)}>
                 {verifyCodeText}
               </button>
@@ -151,11 +142,11 @@ class Reset extends Component {
           </div>
           <div className={styles.password}>
             <div className={styles.searchInput}>
-              <span className="ver-center">
-                <img src={require("../../../images/login&register/login_icon_password.png")} alt=""/>
-              </span>
+                            <span className="ver-center">
+                                <img src={require("../../../images/login&register/login_icon_password.png")} alt=""/>
+                            </span>
               <input type="password" ref="password" maxLength="15" placeholder="新密码（6-15字符）"
-                     value={password} onChange={this.handleInput.bind(this, 'password')}/>
+                     onChange={this.handleInput.bind(this, 'password')}/>
             </div>
           </div>
           <div className={styles.resetBtn} onClick={this.onResetClick.bind(this)}>

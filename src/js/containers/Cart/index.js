@@ -51,7 +51,7 @@ class Cart extends Component {
       this.setState({checkDetailIds: [], delInfo: []});
       this.props.cartActions.initCancelCheck()
     }
-    if (this.props.list !== list) {
+    if(this.props.list !== list) {
       this.setState({checkDetailIds: []});
     }
   }
@@ -212,12 +212,8 @@ class Cart extends Component {
   }
 
   checkCartSelected = (cart) => {
-    const {checkDetailIds, mode} = this.state;
-    const cartDetailIds = mode === 'edit' ? cart.cartDetails.map(detail => detail.cartDetailId)
-      : cart.cartDetails.filter(detail => detail.valid === true).map(item => item.cartDetailId);
-    if (cartDetailIds.length === 0) {
-      return false
-    }
+    const {checkDetailIds} = this.state;
+    const cartDetailIds = cart.cartDetails.map(detail => detail.cartDetailId)
     for (let i = 0, len = cartDetailIds.length; i < len; i++) {
       if (checkDetailIds.indexOf(cartDetailIds[i]) < 0) return false
     }
@@ -432,7 +428,7 @@ class Cart extends Component {
                     </Link>
                     {
                       !detail.valid &&
-                      <p className={`font-24 color-fe5 ${styles.invalid}`}>{detail.reason}</p>
+                        <p className={`font-24 color-fe5 ${styles.invalid}`}>{detail.reason}</p>
                     }
                   </div>
                 )

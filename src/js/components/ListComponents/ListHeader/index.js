@@ -16,10 +16,7 @@ const ListHeader = props => {
         <span className="ver-center">
           <img src={require("../../../../images/base/search_icon_searchhistory.png")} alt=""/>
         </span>
-        {value ?
-          <p className={`ver-center ${styles.font}`}>{value}</p> :
-          <p className={`ver-center ${styles.font}  ${styles.noinput}`}>商品名 品牌 分类</p>
-        }
+        <p className={`ver-center ${styles.font}`}>{value ? value : '商品名 品牌 分类'}</p>
       </Link>
       <Link className={styles.cart} to="/cart/1">
         <img src={require("../../../../images/base/search_icon_car.png")} className="img-responsive"/>

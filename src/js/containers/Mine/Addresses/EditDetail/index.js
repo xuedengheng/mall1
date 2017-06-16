@@ -36,7 +36,7 @@ class EditDetail extends Component {
     mobile: '',
     identityId: '',
     areaCode: '',
-    postCode: '',
+    postCode: null,
     province: '',
     city: '',
     block: '',
@@ -86,7 +86,7 @@ class EditDetail extends Component {
         mobile,
         identityId,
         areaCode,
-        postCode: postCode ? postCode : '',
+        postCode: postCode ? postCode : null,
         province,
         city,
         block,
@@ -111,11 +111,6 @@ class EditDetail extends Component {
       return false
     } else if (postCode && !RegExp.isPostcode(postCode)) {
       Toast.info('请输入正确的邮政编码');
-      return false
-    } else if ((street && !RegExp.isAccepted('text', street)) ||
-      (address && !RegExp.isAccepted('text', address)) ||
-      (name && !RegExp.isAccepted('text', name))) {
-      Toast.info('不能输入敏感符号及表情');
       return false
     } else if (!areaCode) {
       Toast.info('请选择省市区');
@@ -191,21 +186,52 @@ class EditDetail extends Component {
         search: {account: localStorage.account, addressId: this.state.addressId}
       }
       this.props.addressActions.editAddress(params);
+      // fetchApi.post(params).then(result => {
+      //   if (result.success) {
+      //     this.toAddress();
+      //   } else {
+      //     Toast.info(result.msg)
+      //   }
+      // })
     }
   }
 
-  handleInput = (type, e) => {
-    // 判断 value 是否符合规则
-    let value = e.target.value;
-    if (type === 'account') {
-      this.setState({mobile: RegExp.isLimitInput(type, value)});
-    } else if (type === 'postCode') {
-      this.setState({[`${type}`]: RegExp.isLimitInput('account', value)});
-    } else if (type === 'identity') {
-      this.setState({identityId: RegExp.isLimitInput(type, value)});
-    } else {
-      this.setState({[`${type}`]: value});
+  toAddress = () => {
+    hashHistory.goBack()
+  }
+
+  handleName = (e) => {
+    let name = e.target.value;
+    this.setState({name})
+  }
+
+  handleMobile = (e) => {
+    let mobile = e.target.value;
+    if (mobile.length > 11) {
+      return
     }
+    this.setState({mobile})
+  }
+
+  handleID = (e) => {
+    let identityId = e.target.value;
+    this.setState({identityId})
+  }
+
+  handlePostcode = (e) => {
+    let postCode = e.target.value;
+    if (postCode.length > 6) return;
+    this.setState({postCode})
+  }
+
+  handleStreet = (e) => {
+    let street = e.target.value;
+    this.setState({street})
+  }
+
+  handleAddress = (e) => {
+    let address = e.target.value;
+    this.setState({address})
   }
 
   handleChange = bol => {
@@ -281,29 +307,29 @@ class EditDetail extends Component {
         <div className={styles.listWrapper}>
           <div className={styles.label}>收货人</div>
           <div className={styles.writePanel}>
-            <input type="text" name="name" maxLength="10" value={name} placeholder="请输入收货人姓名"
-                   onChange={this.handleInput.bind(this, 'name')}/>
+            <input type="text" name="name" maxLength="10" value={name|| ''} placeholder="请输入收货人姓名"
+                   onChange={this.handleName}/>
           </div>
         </div>
         <div className={styles.listWrapper}>
           <div className={styles.label}>手机号码</div>
           <div className={styles.writePanel}>
-            <input type="text" name="mobile" maxLength="11" value={mobile} placeholder="请输入收货人手机号"
-                   onChange={this.handleInput.bind(this, 'account')}/>
+            <input type="tel" name="mobile" max="11" value={mobile|| ''} placeholder="请输入收货人手机号"
+                   onChange={this.handleMobile}/>
           </div>
         </div>
         <div className={styles.listWrapper}>
           <div className={styles.label}>身份证</div>
           <div className={styles.writePanel}>
-            <input type="text" name="identity" maxLength="18" value={identityId} placeholder="请输入收货人身份证号"
-                   onChange={this.handleInput.bind(this, 'identity')}/>
+            <input type="text" name="identity" maxLength="18" value={identityId|| ''} placeholder="请输入收货人身份证号"
+                   onChange={this.handleID}/>
           </div>
         </div>
         <div className={styles.listWrapper}>
           <div className={styles.label}>邮政编码</div>
           <div className={styles.writePanel}>
-            <input type="text" name="postcode" maxLength="6" value={postCode} placeholder="请输入邮政编码"
-                   onChange={this.handleInput.bind(this, 'postCode')}/>
+            <input type="tel" name="postcode" value={postCode|| ''} placeholder="请输入邮政编码"
+                   onChange={this.handlePostcode}/>
           </div>
         </div>
         <div className={styles.listWrapper} onClick={this.selectAddress}>
@@ -321,27 +347,20 @@ class EditDetail extends Component {
         <div className={styles.listWrapper}>
           <div className={styles.label}>街道</div>
           <div className={styles.writePanel}>
-            <input type="text" maxLength="20" name="street" value={street} placeholder="请输入街道"
-                   onChange={this.handleInput.bind(this, 'street')}/>
+            <input type="text" name="street" value={street|| ''} placeholder="请输入街道"
+                   onChange={this.handleStreet}/>
           </div>
         </div>
         <div className={styles.listWrapper}>
           <div className={styles.label}>详细地址</div>
           <div className={styles.writePanel}>
-            <input type="text" maxLength="150" name="address" value={address} placeholder="请输入详细地址"
-                   onChange={this.handleInput.bind(this, 'address')}/>
+            <input type="text" name="address" value={address|| ''} placeholder="请输入详细地址"
+                   onChange={this.handleAddress}/>
           </div>
         </div>
         {
           type === 0 ?
-            <div>
-              <div className={styles.sign}>
-                <p style={{textAlign: 'left'}}>
-                  易物的海外商品应海关要求需提供身份证信息，易物会保护您的信息安全
-                </p>
-              </div>
-              <FooterBox name="立即保存" handleClick={this.save}/>
-            </div>
+            <FooterBox name="立即保存" handleClick={this.save}/>
             :
             <div>
               <div className={styles.controlList}>

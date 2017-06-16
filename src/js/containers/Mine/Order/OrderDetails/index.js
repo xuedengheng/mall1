@@ -48,8 +48,7 @@ class OrderDetails extends Component {
       deadtime: null,
       modalStatus: null,
       parcelId: null,
-      isShow: true,
-      isTimer: true,
+      isShow: true
     }
   }
 
@@ -89,28 +88,28 @@ class OrderDetails extends Component {
     const {nowTime} = this.props;
     this.clearTimer();
     if (nowTime && time) {
-      let expriedTime = new Date(time.toString().replace(/-/g, '/')).getTime();
-      let nowDay = new Date(nowTime.toString().replace(/-/g, '/')).getTime();
-      let PassTime = expriedTime - nowDay;
-      if (PassTime > 0) {
-        let lastSecond = parseInt(PassTime / 1000, 10);//计算剩余的秒数
+      let createTime = new Date(time.replace(/-/g, '/')).getTime();
+      let nowDay = new Date(nowTime.replace(/-/g, '/')).getTime();
+      let PassTime = nowDay - createTime;
+      let lastScond = parseInt(PassTime / 1000, 10);//计算过去的秒数
+      let Totle = 30 * 60;
+      if (Totle > lastScond) {
+        let tT = Totle - lastScond;
         this.timer = setInterval(() => {
-          lastSecond--;
-          if (lastSecond > 0) {
-            this.setState({
-              min: parseInt(lastSecond / 60) < 10 ? '0' + parseInt(lastSecond / 60) : parseInt(lastSecond / 60),
-              sec: lastSecond % 60 < 10 ? '0' + lastSecond % 60 : lastSecond % 60,
-            });
-          }
-          else {
+          tT--;
+          this.setState({
+            min: parseInt(tT / 60),
+            sec: tT % 60,
+          });
+          if (tT <= 0) {
             clearInterval(this.timer);
-            const {orderId} = this.props.params;
-            this.props.orderActions.queryNowTime();
-            this.props.orderActions.queryOrderDetail(orderId);
+            this.setState({min: 0, sec: 0,});
           }
         }, 1000);
-      } else {
-        this.setState({isTimer: false});
+      } else if (lastScond > Totle) {
+        this.setState({
+          isShow: false
+        });
       }
     }
   }
@@ -119,13 +118,12 @@ class OrderDetails extends Component {
   //给每个商品添加天时分秒倒计时
   DeadTime = (deadtime) => {
     this.clearTimer();
-    const {nowTime} = this.props;
     deadtime && deadtime.map((item, index) => {
       if (item.deadtime !== undefined) {
         this.timer[index] = setInterval(() => {
           let interval = this.state.interval;
           let endTime = new Date(item.deadtime.replace(/-/g, '/')).getTime();
-          let now = new Date(nowTime.replace(/-/g, '/')).getTime();
+          let now = new Date().getTime();
           let leftTime = endTime - now;
           interval[index] = {
             day: parseInt(leftTime / 1000 / 60 / 60 / 24, 10),//计算剩余的天数
@@ -184,52 +182,26 @@ class OrderDetails extends Component {
 
   //提醒发货
   RemindDelivery = () => {
-    if (navigator.onLine) {
-      Toast.info('提醒发货成功！');
-    } else {
-      Toast.info('网络链接异常，请稍后再试');
-    }
+    Toast.info('提醒发货成功！');
   }
   //提醒配货
   RemindDistribution = () => {
-    if (navigator.onLine) {
-      Toast.info('提醒配货成功！');
-    } else {
-      Toast.info('网络链接异常，请稍后再试');
-    }
+    Toast.info('提醒配货成功！');
   }
 
   //立即支付
   nowPayClick = orderInfo => {
-    const {time}=this.props;
-    fetchApi.get({url: urlApi.system.now}).then(json => {
-      if (time && json.result && json.success) {
-        let nowTime = json.result;
-        let expriedTime = new Date(time.toString().replace(/-/g, '/')).getTime();
-        let nowday = new Date(nowTime.toString().replace(/-/g, '/')).getTime();
-        let lastSecond = expriedTime - nowday;
-        if (lastSecond <= 0) {
-          Toast.info('您的支付时间已超时，请重新下单');
-          const {orderId} = this.props.params;
-          this.props.orderActions.queryOrderDetail(orderId);
-        } else {
-          let data = {
-            orderDetail: [{orderId: orderInfo.orderId}],
-            orderJnId: orderInfo.orderJnId,
-            totalAmount: orderInfo.payAmount,
-            isDiscounted: orderInfo.isDiscounted
-          }
-          hashHistory.push({
-            pathname: `/pay_order/${JSON.stringify(data)}`,
-            search: `?from=order`
-          })
-        }
-      }
-    }).catch(e => {
-      Toast.info("网络请求失败，请检查您的网络");
+    let data = {
+      orderDetail: [{orderId: orderInfo.orderId}],
+      orderJnId: orderInfo.orderJnId,
+      totalAmount: orderInfo.payAmount,
+      isDiscounted: orderInfo.isDiscounted
+    }
+    hashHistory.push({
+      pathname: `/pay_order/${JSON.stringify(data)}`,
+      search: `?from=order`
     })
   }
-
 
   setStatusValue = (postPurchasedStatus, status) => {
     if (postPurchasedStatus) {
@@ -283,7 +255,7 @@ class OrderDetails extends Component {
 
   render() {
     const {palceldetail, isFetching, visible} = this.props;
-    const {interval, modalStatus, isShow, isTimer} = this.state;
+    const {interval, modalStatus, isShow} = this.state;
     const style = {
       display: isShow ? '' : 'none',
     }
@@ -308,7 +280,7 @@ class OrderDetails extends Component {
 
         <div className={styles.Odetails}>
           <p className={styles.title}>{palceldetail.storeName}发货</p>
-          <p className={styles.Time} style={style}>{palceldetail.orderStatus === '10' && isTimer ?
+          <p className={styles.Time} style={style}>{palceldetail.orderStatus === '10' ?
             <em>{this.state.min}分{this.state.sec}秒后关闭订单</em> : null }</p>
         </div>
         <div className={styles.allA}>
@@ -321,8 +293,7 @@ class OrderDetails extends Component {
                   <em>收货人：<span>{palceldetail.contactsName}</span></em>
                   <em>{palceldetail.contactsMobile}</em>
               </span>
-              <span
-                className={`text-overflow-2 ${styles.DetailAdr}`}>收货地址：<em>{palceldetail.contactsProvince}</em>&nbsp;
+              <span className={styles.DetailAdr}>收货地址：<em>{palceldetail.contactsProvince}</em>&nbsp;
                 <em>{palceldetail.contactsCity}</em>&nbsp;<em>{palceldetail.contactsBlock}</em>&nbsp;
                 <em>{palceldetail.contactsStreet}</em>&nbsp;
                 <em>{palceldetail.contactsAddress}</em></span>
@@ -406,34 +377,28 @@ class OrderDetails extends Component {
                                 </li>
                               </Link>
                               {
-                                detail.canRefund === 'Y' ?
-                                  <div>
-                                    {
-                                      !detail.postPurchasedStatus ?
-                                        <Link
-                                          to={`/mine/applyrefund/${JSON.stringify({
-                                            orderId: goods.orderId,
-                                            quantity: detail.quantity,
-                                            payPrice: detail.payPrice,
-                                            skuId: detail.skuId,
-                                            storeId: detail.storeId
-                                          })}`}>
-                                          <em className={styles.refundfont}>
-                                            {this.setStatusValue(detail.postPurchasedStatus, goods.status)}
-                                          </em>
-                                        </Link> :
-                                        <Link
-                                          to={`/mine/refund/${JSON.stringify({
-                                            orderId: goods.orderId,
-                                            skuId: detail.skuId
-                                          })}`}>
-                                          <em className={styles.refundfont}>
-                                            {this.setStatusValue(detail.postPurchasedStatus, goods.status)}
-                                          </em>
-                                        </Link>
-                                    }
-                                  </div>
-                                  : null
+                                !detail.postPurchasedStatus ?
+                                  <Link
+                                    to={`/mine/applyrefund/${JSON.stringify({
+                                      orderId: goods.orderId,
+                                      quantity: detail.quantity,
+                                      payPrice: detail.payPrice,
+                                      skuId: detail.skuId,
+                                      storeId: detail.storeId
+                                    })}`}>
+                                    <em
+                                      onClick={this.ApplyForRefund}
+                                      className={styles.refundfont}>{this.setStatusValue(detail.postPurchasedStatus, goods.status)}</em>
+                                  </Link> :
+                                  <Link
+                                    to={`/mine/refund/${JSON.stringify({
+                                      orderId: goods.orderId,
+                                      skuId: detail.skuId
+                                    })}`}>
+                                    <em
+                                      onClick={this.ApplyForRefund}
+                                      className={styles.refundfont}>{this.setStatusValue(detail.postPurchasedStatus, goods.status)}</em>
+                                  </Link>
                               }
                             </div>
                           )
@@ -464,7 +429,7 @@ class OrderDetails extends Component {
                                               </Link>
                                               :
                                               <a
-                                                href={`https://m.kuaidi100.com/index_all.html?type=${Constant.getExpressType(goods.expressCorp)}&postid=${goods.expressNum}`}>
+                                                href={`http://m.kuaidi100.com/index_all.html?type=${Constant.getExpressType(goods.expressCorp)}&postid=${goods.expressNum}&callbackurl=${encodeURIComponent(window.location.href)}`}>
                                                 <button
                                                   className={styles.FButn}>
                                                   查看物流
@@ -517,7 +482,7 @@ class OrderDetails extends Component {
                                                     </Link>
                                                     :
                                                     <a
-                                                      href={`https://m.kuaidi100.com/index_all.html?type=${Constant.getExpressType(goods.expressCorp)}&postid=${goods.expressNum}`}>
+                                                      href={`http://m.kuaidi100.com/index_all.html?type=${Constant.getExpressType(goods.expressCorp)}&postid=${goods.expressNum}`}>
                                                       <button
                                                         className={styles.FButn}>
                                                         查看物流

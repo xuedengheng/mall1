@@ -6,7 +6,7 @@
 
   .inputPanel {
     padding: 0 .24rem;
-    flex: 1;
+
     .phone {
       margin-bottom: .2rem;
     }
@@ -87,10 +87,12 @@
 
   .backLoginPanel {
     padding: 0 .24rem;
-    flex: 0 0 .8rem;
-    display: flex;
-    justify-content: flex-end;
+    flex-grow: 1;
+
     .backLogin {
+      position: absolute;
+      bottom: 0;
+      right: 0;
       font-size: .28rem;
       padding: .2rem;
 

@@ -39,8 +39,10 @@ class Coupon extends Component {
     adoptedAction: STATS.init,
     usedAction: STATS.init,
     expiredAction: STATS.init,
+    swipe: false,
     hasRefresh: false,
-    wrapperEvent: '',
+    showDes: [],
+    showDel: [],
   }
 
 
@@ -196,6 +198,7 @@ class Coupon extends Component {
       default:
         break;
     }
+    this.setState({swipe: false});
   }
 
   handleAction(action) {
@@ -218,8 +221,10 @@ class Coupon extends Component {
           this.handLoadMore();
         } else {
           this.setState({usedAction: action});
+          this.setState({swipe: true});
         }
         if (action === STATS.reset) {
+          this.setState({swipe: false});
         }
         break;
       case CouponType.expired:
@@ -230,17 +235,20 @@ class Coupon extends Component {
           this.handLoadMore();
         } else {
           this.setState({expiredAction: action});
+          this.setState({swipe: true});
+        }
+        if (action === STATS.reset) {
+          this.setState({swipe: false});
         }
         break;
       default:
         break;
     }
-    this.setState({hasRefresh: false, couponId: ''});
   }
 
   handRefreshing() {
     this.handlePull(true, 0);
-    this.setState({hasRefresh: true,});
+    this.setState({hasRefresh: true});
   }
 
   handLoadMore() {
@@ -260,24 +268,21 @@ class Coupon extends Component {
       default:
         break;
     }
-    this.setState({hasRefresh: true,});
+    this.setState({hasRefresh: true});
   }
 
   deleteCoupon = (couponId) => {
-    this.setState({visible: true, couponId, hasRefresh: false});
+    this.setState({showDel: [], visible: true, couponId});
   }
 
   cancelDelete = () => {
     this.setState({visible: false});
   }
 
-  wrapperClick = (id) => {
-    this.setState({couponId: id, hasRefresh: false});
-  }
-
   confirmDelete = () => {
-    this.setState({visible: false, couponId: ''});
+    this.setState({visible: false});
     const {listStatus, couponId} = this.state;
+    console.log(couponId);
     this.props.couponActions.deleteCoupon(listStatus, couponId);
   }
 
@@ -293,10 +298,7 @@ class Coupon extends Component {
 
   render() {
     const {isFetching, adoptedEmpty, usedEmpty, expiredEmpty} = this.props;
-    const {
-      hasRefresh, couponId, visible, adopted, used, expired, adoptedAction,
-      usedAction, expiredAction, adoptedHasMore, usedHasMore, expiredHasMore
-    } = this.state;
+    const {hasRefresh, visible, adopted, used, expired, adoptedAction, usedAction, expiredAction, adoptedHasMore, usedHasMore, expiredHasMore} = this.state;
     const TIPS = DeleteTips;
     return (
       <div>
@@ -336,8 +338,8 @@ class Coupon extends Component {
                     {
                       adopted && adopted.map((coupon, index) => {
                         return (
-                          <CouponItem hasRefresh={hasRefresh}
-                                      key={index} coupon={coupon} mode="edit"/>
+                          <CouponItem
+                            key={index} coupon={coupon} mode="edit"></CouponItem>
                         )
                       })
                     }
@@ -365,9 +367,7 @@ class Coupon extends Component {
                       used && used.map((coupon, index) => {
                         return (
                           <CouponItem key={index} coupon={coupon} mode="edit" hasRefresh={hasRefresh}
-                                      onDel={this.deleteCoupon.bind(this, coupon.id)}
-                                      couponClick={this.wrapperClick.bind(this, coupon.id)}
-                                      couponId={couponId}/>
+                            onDel={this.deleteCoupon.bind(this, coupon.id)}></CouponItem>
                         )
                       })
                     }
@@ -394,9 +394,9 @@ class Coupon extends Component {
                     {
                       expired && expired.map((coupon, index) => {
                         return (
-                          <CouponItem couponClick={this.wrapperClick.bind(this, coupon.id)} couponId={couponId}
-                                      key={index} coupon={coupon} mode="edit" hasRefresh={hasRefresh}
-                                      onDel={this.deleteCoupon.bind(this, coupon.id)}/>
+                          <CouponItem
+                            key={index} coupon={coupon} mode="edit" hasRefresh={hasRefresh}
+                            onDel={this.deleteCoupon.bind(this, coupon.id)}></CouponItem>
                         )
                       })
                     }

@@ -5,7 +5,7 @@ import React, {Component} from 'react'
 import {GoBack, FooterBox, SetHelmet} from 'components'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {RegExp, Constant} from 'service'
+import {RegExp} from 'service'
 import {Toast} from 'antd-mobile'
 import * as PersonalAction from 'actions/PersonalActions'
 import styles from './index.scss'
@@ -26,7 +26,7 @@ class EditName extends Component {
 
   nameChange = (e) => {
     let nickName = e.target.value;
-    this.setState({nickName: nickName})
+    this.setState({nickName})
   }
 
   editName = () => {
@@ -35,10 +35,8 @@ class EditName extends Component {
       if (RegExp.isNickName(nickName)) {
         this.props.personalActions.queryPersonal({nickName});
       } else {
-        Toast.info('只支持英文、数字、汉字、下划线');
+        Toast.info('请输入正确的格式');
       }
-    }else{
-      Toast.info('请输入用户名');
     }
   }
 

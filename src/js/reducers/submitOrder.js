@@ -9,8 +9,7 @@ import {
   INIT_SUBMITORDER,
   SET_PAY_URL,
   SUBMIT_ORDER,
-  SUBMITORDER_END,
-  CLOSE_NOTVALID_MODAL
+  SUBMITORDER_END
 } from 'actions/actionsTypes'
 
 const init = {
@@ -24,11 +23,10 @@ const init = {
   totalAmount: 0,
   totalFreight: 0,
   totalPayAmount: 0,
-  notValid: [],
   payUrl: null
 }
 
-export default function submitOrder(state = init, action) {
+export default function submitOrder(state=init, action) {
   switch (action.type) {
     case GET_PROMOTIONS:
       return {
@@ -57,10 +55,10 @@ export default function submitOrder(state = init, action) {
         totalFreight: action.totalFreight,
         totalPayAmount: action.totalPayAmount,
         quantity: action.isFirst ? action.orderSkuDTOs.reduce((orderAcc, order) => {
-            return orderAcc + order.skuPrices.reduce((skuAcc, sku) => {
-                return skuAcc + Number(sku.quantity)
-              }, 0)
-          }, 0) : state.quantity
+          return orderAcc + order.skuPrices.reduce((skuAcc, sku) => {
+              return skuAcc + Number(sku.quantity)
+            }, 0)
+        }, 0) : state.quantity
       }
     case SUBMIT_ORDER:
       return {
@@ -80,14 +78,7 @@ export default function submitOrder(state = init, action) {
     case SUBMITORDER_END:
       return {
         ...state,
-        isFetching: false,
-        notValid: action.notValid
-      }
-    case CLOSE_NOTVALID_MODAL:
-      return {
-        ...state,
-        isFetching: false,
-        notValid: []
+        isFetching: false
       }
     default:
       return state

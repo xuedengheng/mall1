@@ -3,7 +3,6 @@
  */
 import React, {Component} from 'react';
 import {hashHistory} from 'react-router'
-import styles from './index.scss'
 import {SearchInput, SearchHistory, SetHelmet} from 'components'
 import {connect} from 'react-redux'
 
@@ -11,13 +10,11 @@ class SearchPage extends Component {
 
   render() {
     return (
-      <div className={styles.root}>
+      <div>
         <SetHelmet title="搜索"/>
         <SearchInput back={this.back} search={this.search}/>
         <div className="pt20" />
-        <div className={styles.historyWrapper}>
-          <SearchHistory search={this.search}/>
-        </div>
+        <SearchHistory search={this.search}/>
       </div>
     )
   }

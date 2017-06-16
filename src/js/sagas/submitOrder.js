@@ -100,13 +100,12 @@ function* submitOrder(action) {
     let json = yield call(fetchApi.postJson, action.params);
     if (json.success) {
       let url = `/pay_order/${JSON.stringify(json.result)}?mode=${action.mode}${action.mode === 'immediately' ? '&id=' + json.result.orderDetail[0].orderId : ''}`;
-      yield put({type: SET_PAY_URL, url});
+      // yield put({type: SET_PAY_URL, url});
+      hashHistory.replace(url);
     } else {
-      json.code === 8012 ? yield put({type: SUBMITORDER_END, notValid: json.result.notValidCartFroms[0].cartDetailId}) :
-        yield put({type: SUBMITORDER_END});
+      yield put({type: SUBMITORDER_END});
+      console.log(json.msg, json.code);
       switch (json.code) {
-        case 8012:
-          break;
         case 8015:
           yield put({type: ERROR, error: json.msg});
           setTimeout(function () {
@@ -127,7 +126,6 @@ function* submitOrder(action) {
           break;
         default:
           yield put({type: ERROR, error: json.msg})
-          break;
       }
 
     }

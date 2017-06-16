@@ -59,7 +59,7 @@ function* getOrderDetail(action) {
     if (data.success) {
       let orderId = data.result.orderId;
       let refundamount = data.result.parcelList[0].orderDetailList[0].amount;
-      let time = data.result.exprieTime;
+      let time = data.result.createTime;
       let orderStatus = data.result.orderStatus;
       let deadtime = data.result.parcelList.map(item => {
         return {

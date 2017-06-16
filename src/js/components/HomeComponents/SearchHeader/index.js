@@ -19,7 +19,7 @@ export default class SearchHeader extends Component {
                     <span className="ver-center">
                         <img src={require("../../../../images/home/homepage_searchbar_icon_search.png")} alt=""/>
                     </span>
-                    <p className="ver-center">商品名 品牌 分类</p>
+                    <p className="ver-center">商品名</p>
                 </Link>
                 <Link className={styles.categoryIcon} to="/catelog">
                     <img src={require("../../../../images/home/homepage_icon_search.png")} alt=""/>

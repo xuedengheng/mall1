@@ -3,9 +3,9 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+
   .inputPanel {
     padding: 0 .24rem;
-    flex:1;
 
     .phone {
       margin-bottom: .2rem;
@@ -86,8 +86,11 @@
 
   .backLoginPanel {
     padding: 0 .24rem;
-    flex:0 0 .8rem;
+    flex-grow: 1;
+
     .backLogin {
+      position: absolute;
+      bottom: 0;
       font-size: .28rem;
       padding: .2rem 0;
 

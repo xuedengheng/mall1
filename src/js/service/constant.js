@@ -3,7 +3,7 @@
  */
 /***********************************************  常量  ********************************************************/
 
-export const CDN_HOST = 'http://test.9yiwu.com';
+export const CDN_HOST = 'http://api.9yiwu.com';
 
 //mchannal
 export const NG_APP = 'NG_APP';
@@ -33,15 +33,6 @@ export const WAY_YW = "YIWUCOIN";
  * 飞马钱包支付
  * */
 export const WAY_FM = "FEIMA";
-
-//输入框正则限制
-export const MOBILE_PATTERN = 'account';
-export const NAME_PATTERN = 'name';
-export const PWD_PATTERN = 'password';
-export const IDENTITY_PATTERN = 'identity';
-export const MONEY_PATTERN = 'money';
-export const ADDRESS_PATTERN = 'address';
-export const TEXT_PATTERN = 'text';
 
 
 //限时购倒计时状态

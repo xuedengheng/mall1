@@ -9,7 +9,7 @@ import {
 
 const init = {
   isFetching: false,
-  sex: ''
+  sex:''
 }
 
 export default function queryPersonal(state = init, action) {
@@ -22,8 +22,7 @@ export default function queryPersonal(state = init, action) {
     case QUERY_PERSONAL_SUCCESS:
       return {
         ...state,
-        isFetching: false,
-        sex: action.sex
+        isFetching: false
       }
     case END_PERSONAL_CTRL:
       return {

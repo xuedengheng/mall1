@@ -9,8 +9,7 @@ import {
   INIT_SUBMITORDER,
   SUBMIT_ORDER,
   SET_PAY_URL,
-  SUBMITORDER_END,
-  CLOSE_NOTVALID_MODAL
+  SUBMITORDER_END
 } from './actionsTypes'
 
 export const getPromotions = orderSkuDTOs => ({
@@ -55,12 +54,6 @@ export const initSubmitOrder = () => ({
   type: INIT_SUBMITORDER
 })
 
-export const submitOrderEnd = (notValid) => ({
-  type: SUBMITORDER_END,
-  notValid
-})
-
-export const closeModal = (notValid) => ({
-  type: CLOSE_NOTVALID_MODAL,
-  notValid
+export const submitOrderEnd = () => ({
+  type: SUBMITORDER_END
 })

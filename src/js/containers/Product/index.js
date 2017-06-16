@@ -322,7 +322,7 @@ class Product extends Component {
         {
           (isFetchingProduct || isFetchingSearch || isFetchingCartData) && <Loading/>
         }
-        <FixHeader hightLight={false}/>
+        {/*<FixHeader hightLight={false}/>*/}
         <div className={styles.pictureWrapper}>
           <ImgSwiper pictureUrls={pictureUrls} picture={picture} {...settings}/>
           {

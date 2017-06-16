@@ -43,13 +43,15 @@
 .couponwrapper {
   width: 100%;
   overflow-x: hidden;
-}
-.emptycoupon {
-  margin-top: 3.46rem;
-  padding-bottom: 3rem;
-  text-align: center;
-  img {
-    width: 2rem;
-    height: 1.5rem;
+
+  .emptycoupon {
+    margin-top: 3.46rem;
+    padding-bottom: 3rem;
+    text-align: center;
+    img {
+      width: 2rem;
+      height: 1.5rem;
+    }
   }
+
 }

@@ -7,9 +7,8 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {Link, hashHistory} from 'react-router'
 import styles from './index.scss'
-import {api, urlApi, fetchApi, dateUtil, getQueryString, RegExp} from 'service'
+import {api, urlApi, fetchApi, dateUtil, getQueryString} from 'service'
 import _ from 'lodash'
-import {WarningModal} from 'components';
 import * as AddressActions from 'actions/AddressActions'
 import * as SubmitOrderActions from 'actions/SubmitOrderActions'
 import {
@@ -34,7 +33,6 @@ class SubmitOrder extends Component {
       visible: false,
       addressVisible: false,
       couponSelectVisible: false,
-      notValidVisible: false,
       skuId: null,
       productId: null,
       activityDetail: null,
@@ -48,8 +46,7 @@ class SubmitOrder extends Component {
       newComerDiscount: null,
       deductionDiscount: null,
       activityId: null,
-      activityType: null,
-      isChecked: ''
+      activityType: null
     }
   }
 
@@ -103,11 +100,6 @@ class SubmitOrder extends Component {
       hashHistory.replace(payUrl);
       this.props.submitOrderActions.submitOrderEnd();
     }
-    if (nextProps.notValid && nextProps.notValid.length > 0) {
-      this.setState({notValidVisible: true})
-    } else {
-      this.setState({notValidVisible: false})
-    }
   }
 
   componentWillUnmount() {
@@ -123,8 +115,8 @@ class SubmitOrder extends Component {
   //   }
   // }
 
-  getorderSkuDTOs = (data) => {
-    return data.map(cart => {
+  getorderSkuDTOs = () => {
+    return this.props.data.map(cart => {
       return {
         storeId: cart.storeId,
         skuPrices: cart.cartDetails.map(detail => {
@@ -147,7 +139,7 @@ class SubmitOrder extends Component {
         orderSkuDTOs = data;
         break;
       case 'cart':
-        orderSkuDTOs = this.getorderSkuDTOs(data);
+        orderSkuDTOs = this.getorderSkuDTOs();
         break;
       default:
         break;
@@ -239,7 +231,7 @@ class SubmitOrder extends Component {
     } else {
       postPromotions = [...this.props.postPromotions, {type: 'COUPON', coupons: [selectedCoupon]}]
     }
-    this.setState({selectedCoupon, couponSelectVisible: false, isChecked: ''});
+    this.setState({selectedCoupon, couponSelectVisible: false});
     this.calculate(postPromotions)
   }
 
@@ -249,13 +241,13 @@ class SubmitOrder extends Component {
       postPromotions = [...this.props.postPromotions.filter(promo => promo.type !== 'COUPON')]
       this.calculate(postPromotions)
     }
-    this.setState({selectedCoupon: null, couponSelectVisible: false, isChecked: -1});
+    this.setState({selectedCoupon: null, couponSelectVisible: false});
   }
 
   calculate = postPromotions => {
     const submitType = this.props.type;
     let params = {
-      orderSkuDTOs: submitType === 'product' ? this.props.data : this.getorderSkuDTOs(this.props.data),
+      orderSkuDTOs: submitType === 'product' ? this.props.data : this.getorderSkuDTOs(),
       promotionDTOs: postPromotions
     }
     this.props.submitOrderActions.calculatePromotions(params)
@@ -273,32 +265,6 @@ class SubmitOrder extends Component {
     })
   }
 
-  closeNotValid = () => {
-    this.props.submitOrderActions.closeModal([]);
-  }
-
-  removeNotValid = () => {
-    const {data, type, notValid}=  this.props;
-    this.order = data;
-    this.order.map(item => {
-      _.remove(item.cartDetails, (skus) => {
-        return notValid.indexOf(skus.cartDetailId) > -1
-      })
-    })
-    this.order.map(() => {
-      _.remove(this.order, store => {
-        return !store.cartDetails || store.cartDetails.length === 0
-      })
-    })
-    if (this.order && this.order.length === 0) {
-      hashHistory.goBack();
-    } else {
-      this.promotionCtrl(this.order, type);
-    }
-    this.props.submitOrderActions.closeModal([]);
-    this.handleNouse();
-  }
-
   submitOrder = () => {
     const {defaultAddress, skuId, price, remarks, storeId, activityId, activityType} = this.state;
     const {quantity, data, location} = this.props;
@@ -310,7 +276,7 @@ class SubmitOrder extends Component {
     let params;
     let orderSkuDTOs;
     if (mode === 'submit') {
-      orderSkuDTOs = this.getorderSkuDTOs(data);
+      orderSkuDTOs = this.getorderSkuDTOs();
       params = {
         url: urlApi.checkout.submit,
         search: {
@@ -346,15 +312,11 @@ class SubmitOrder extends Component {
         }
       }
     }
-    if (RegExp.isAccepted('text',remarks)) {
-      this.props.submitOrderActions.submitOrder(params, orderSkuDTOs, mode)
-    }else{
-      Toast.info("不能输入敏感字符及表情");
-    }
+    this.props.submitOrderActions.submitOrder(params, orderSkuDTOs, mode)
   }
 
   render() {
-    const {fetchingAddress, data, notValid, type, isFetching, orderSkuDTOs, queryPromotions, promotionDiscountDTOs, postPromotions, quantity, totalAmount, totalFreight, totalPayAmount} = this.props;
+    const {fetchingAddress, data, type, isFetching, orderSkuDTOs, queryPromotions, promotionDiscountDTOs, postPromotions, quantity, totalAmount, totalFreight, totalPayAmount} = this.props;
     const {
       activityType,
       activityStatus,
@@ -363,11 +325,9 @@ class SubmitOrder extends Component {
       addresses,
       visible,
       addressVisible,
-      notValidVisible,
       remarks,
       selectedCoupon,
-      couponSelectVisible,
-      isChecked
+      couponSelectVisible
     } = this.state;
     const deductPromo = _.find(promotionDiscountDTOs, promo => promo.type === 'DEDUCTION');
     const newComerPromo = _.find(promotionDiscountDTOs, promo => promo.type === 'NEW_COMER');
@@ -480,7 +440,7 @@ class SubmitOrder extends Component {
             {
               (parseFloat(totalAmount) + parseFloat(totalFreight) > parseFloat(totalPayAmount) ||
               (orderSkuDTOs && _.findIndex(orderSkuDTOs, item =>
-              _.findIndex(item.skuPrices, sku => parseFloat(sku.payPrice) !== parseFloat(sku.price)) > -1) > -1) ) &&
+              _.findIndex(item.skuPrices, sku => !sku.activityType === false) > -1) > -1) ) &&
               <p>
                 优惠订单暂只支持支付宝、微信、飞马等支付方式支付
               </p>
@@ -512,10 +472,7 @@ class SubmitOrder extends Component {
         <AddressSelect visible={addressVisible} addresses={addresses ? addresses : null}
                        close={this.close} handleClick={this.addressChecked}/>
         <CouponSelect visible={couponSelectVisible} usableCoupon={usableCoupon} unusableCoupon={unusableCoupon}
-                      close={this.close} handleSelect={this.selectCoupon} handleNouse={this.handleNouse}
-                      isChecked={isChecked}/>
-        <WarningModal visible={notValidVisible} onCancel={this.closeNotValid} onRemove={this.removeNotValid}
-                      orderData={data} notValid={notValid}/>
+                      close={this.close} handleSelect={this.selectCoupon} handleNouse={this.handleNouse}/>
         {/*<Prompt message={this.checkoutBack}/>*/}
       </div>
     )
@@ -528,7 +485,6 @@ const mapStateToProps = state => ({
   addresses: state.address.addresses,
   data: state.presubmit.data,
   type: state.presubmit.type,
-  notValid: state.submitOrder.notValid,
   isFetching: state.submitOrder.isFetching,
   orderSkuDTOs: state.submitOrder.orderSkuDTOs,
   queryPromotions: state.submitOrder.queryPromotions,

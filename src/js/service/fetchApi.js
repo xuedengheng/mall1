@@ -14,7 +14,6 @@ export const fetchApi = {
     let account = localStorage.account;
     let password = localStorage.password;
     let headers = new Headers({});
-    headers.append('device', confidential.DEVICE)
     headers.append('mChannal', mchannal ? mchannal : confidential.M_CHANNAL);
     if (token) {
       headers.append('accessToken', token);
@@ -107,7 +106,6 @@ export const fetchApi = {
     let account = localStorage.account;
     let password = localStorage.password;
     let headers = new Headers();
-    headers.append('device', confidential.DEVICE)
     headers.append('mChannal', mchannal ? mchannal : confidential.M_CHANNAL);
     if (token) {
       headers.append('accessToken', token);
@@ -166,7 +164,6 @@ export const fetchApi = {
     let account = localStorage.account;
     let password = localStorage.password;
     let headers = new Headers();
-    headers.append('device', confidential.DEVICE)
     headers.append('mChannal', mchannal ? mchannal : confidential.M_CHANNAL);
     headers.append('Accept', 'application/json, text/plain, */*');
     headers.append('Content-Type', 'application/json');

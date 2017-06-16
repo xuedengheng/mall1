@@ -4,7 +4,7 @@
 import React from 'react'
 import styles from './index.scss'
 import {dateUtil} from 'service'
-import {CouponItem, SetHelmet} from 'components'
+import {CouponItem,SetHelmet} from 'components'
 import {hashHistory} from 'react-router'
 const BY_RANGE = 'BY_RANGE';
 const BY_DAYS = 'BY_DAYS';
@@ -17,7 +17,7 @@ class CouponSelect extends React.Component {
       isShow: false,
       animationType: 'leave',
       checked: -1,
-      init: false
+      init:false
     }
   }
 
@@ -51,12 +51,12 @@ class CouponSelect extends React.Component {
   }
 
   _handleSelect = (coupon, checked) => {
-    this.setState({checked, init: true});
+    this.setState({checked,init:true});
     this.props.handleSelect(coupon)
   }
 
   _handleNouse = () => {
-    this.setState({checked: -1, init: true});
+    this.setState({checked: -1,init:true});
     this.props.handleNouse()
   }
 
@@ -65,8 +65,8 @@ class CouponSelect extends React.Component {
   }
 
   render() {
-    const {usableCoupon, unusableCoupon, close, isChecked} = this.props;
-    const {isShow, animationType, checked, init} = this.state;
+    const {usableCoupon, unusableCoupon, close} = this.props;
+    const {isShow, animationType, checked,init} = this.state;
     const style = {
       display: isShow ? '' : 'none',
       WebkitAnimationDuration: '300ms',
@@ -93,8 +93,7 @@ class CouponSelect extends React.Component {
             usableCoupon && usableCoupon.map((item, index) => {
                 return (
                   <CouponItem onSelect={this._handleSelect.bind(this, item, index)} hasRefresh={init}
-                              key={index} index={index} checked={isChecked ? isChecked : checked} coupon={item}
-                              mode="submit"/>
+                              key={index} index={index} checked={checked} coupon={item} mode="submit"></CouponItem>
                 )
               }
             )
@@ -106,7 +105,7 @@ class CouponSelect extends React.Component {
                 {
                   unusableCoupon.map((item, index) => {
                       return (
-                        <CouponItem key={index} coupon={item} hasRefresh={init} mode="submit"/>
+                        <CouponItem key={index} coupon={item}  hasRefresh={init} mode="submit"></CouponItem>
                       )
                     }
                   )

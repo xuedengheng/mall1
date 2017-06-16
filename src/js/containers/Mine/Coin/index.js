@@ -210,7 +210,7 @@ class Coin extends Component {
           <div style={{height: '1.84rem'}}/>
           <div className={`ver-center bg-orange ${styles.topCon}`}>
             <div className={`center-center ${styles.leftCon}`}>
-              <span className="font-32 ">余额总计</span>
+              <span className="font-32 ">总计</span>
             </div>
             <div className={`center-center ${styles.rightCon}`}>
                         <span
@@ -247,7 +247,7 @@ class Coin extends Component {
                                          src={require(`../../../../images/mine/yiwucoin/yidian_icon_${data.type === 'Drawback' ? 'return' : 'charge'}.png`)}/>
                                   </div>
                                   <div className={styles.price}>
-                                    <p className={styles.amount}>+{parseFloat(data.amount).toFixed(2)}</p>
+                                    <p className={styles.amount}>+{data.amount}</p>
                                     <p className={styles.remark}>{data.type === 'Drawback' ? '订单退款' : '易物卡充值'}</p>
                                   </div>
                                 </div>
@@ -299,7 +299,7 @@ class Coin extends Component {
                                          src={require('../../../../images/mine/yiwucoin/yidian_icon_order.png')}/>
                                   </div>
                                   <div className={styles.price}>
-                                    <p className={styles.amount}>-{parseFloat(data.amount).toFixed(2)}</p>
+                                    <p className={styles.amount}>-{data.amount}</p>
                                     <p className={styles.remark}>{data.remark}</p>
                                   </div>
                                 </div>

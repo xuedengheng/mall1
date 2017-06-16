@@ -138,7 +138,7 @@ export const GET_PAY_TOKEN = 'GET_PAY_TOKEN';
 export const PAY = 'PAY';
 export const GET_YIWUCOIN = 'GET_YIWUCOIN';
 export const GET_YIWUCOIN_SUCCESS = 'GET_YIWUCOIN_SUCCESS';
-export const END_GET_YW = 'END_GET_YW';
+export const END_GET_YW  = 'END_GET_YW';
 
 //Payresult
 export const QUERY_PAY_RESULT = 'QUERY_PAY_RESULT';
@@ -199,7 +199,6 @@ export const SUBMIT_ORDER = 'SUBMIT_ORDER';
 export const SUBMITORDER_END = 'SUBMITORDER_END';
 export const SET_PAY_URL = 'SET_PAY_URL';
 export const INIT_SUBMITORDER = 'INIT_SUBMITORDER';
-export const CLOSE_NOTVALID_MODAL = 'CLOSE_NOTVALID_MODAL';
 
 //Express
 export const QUERY_EXPRESS = 'QUERY_EXPRESS';

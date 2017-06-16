@@ -12,7 +12,6 @@ export {default as HeaderNode} from './BaseComponents/HeaderNode'
 export {default as FooterNode} from './BaseComponents/FooterNode'
 export {default as Contact} from './BaseComponents/Contact'
 export {default as ConfirmModal} from './BaseComponents/ConfirmModal'
-export {default as WarningModal} from './BaseComponents/WarningModal'
 //头部返回标题组件
 export {default as GoBack} from './BaseComponents/GoBack'
 //底部组件
