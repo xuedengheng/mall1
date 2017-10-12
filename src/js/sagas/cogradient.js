@@ -19,7 +19,7 @@ function* presubmit(action) {
   yield put({type: PRESUBMIT_SUCCESS, result, status});
   if (status === 'product') {
     history.push('/submit_order?mode=immediately');
-    yield put({type: TOGGLE_PRODUCT_MODAL, false})
+    yield put({type: TOGGLE_PRODUCT_MODAL, status: false})
   } else {
     history.push('/submit_order')
   }
