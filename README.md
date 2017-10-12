@@ -33,7 +33,7 @@ flex(100, 1);</script>
 ```
 4. 本人心得，关于图片，比如640px宽度的效果图下，你量取某图片宽120px, 高80px, 它的样式应该是`width: 1.2rem; height: 0.8rem` 没问题，但是图片实际尺寸应该是此基础上的1.5倍，即图片应该宽180px, 高120px，这是因为现在很多设备的屏幕的`DPR`达到了3的水平。如此，图片在次屏幕上会“高清显示”。 
 
-## 本模板包含step-02用到的所有包，下面将介绍 **额外** 添加的包
+## 该项目用到的比较重要的包
 
 #### [react-router](https://github.com/reactjs/react-router) [必需]
 > `React Router` 一个针对 `React` 而设计的路由解决方案、可以友好的帮你解决 `React components` 到 `URl` 之间的同步映射关系。  
